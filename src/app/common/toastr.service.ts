@@ -5,10 +5,12 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class NotificationService {
-  constructor(private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService) {
+  }
 
   success(message: string, title?: string) {
-    this.toastr.success(message, title);
+    
+    this.toastr.success(message, title, {positionClass: 'toast-top-right'});
   }
   info(message: string, title?: string) {
     this.toastr.info(message, title);

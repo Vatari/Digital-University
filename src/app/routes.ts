@@ -1,10 +1,13 @@
 import { Routes } from '@angular/router';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { CreateEventComponent } from './events/create-event/create-event.component';
-import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { RouteActivatorService } from './events/event-details/route-activator.service';
-import { EventsListComponent } from './events/events-list.component';
-import { EventListResolverService } from './events/shared/event-list-resolver.service';
+
+import {
+  CreateEventComponent,
+  EventDetailsComponent,
+  EventsListComponent,
+  EventListResolverService,
+} from './events/index';
 
 export const appRoutes: Routes = [
   {
@@ -24,4 +27,8 @@ export const appRoutes: Routes = [
   },
   { path: '404', component: NotFoundComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then((x) => x.UserModule),
+  },
 ];

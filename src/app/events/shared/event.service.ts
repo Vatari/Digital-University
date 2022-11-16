@@ -16,8 +16,15 @@ export class EventService {
     }, 100);
     return subject;
   }
-  getEvent(id: number) { //:IEvent
+  getEvent(id: number) {
+    //:IEvent
     return EVENTS.find((ev) => ev.id === id);
+  }
+
+  saveEvent(event: any) {
+    event.id = 999;
+    event.session = [];
+    EVENTS.push(event);
   }
 }
 const EVENTS: IEvent[] = [

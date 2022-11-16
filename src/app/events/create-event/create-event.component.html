@@ -112,38 +112,39 @@
         placeholder="event price..."
       />
     </div>
-
-    <div class="form-group">
-      <label for="address">Event Location:</label>
-      <input
-        (ngModel)="(newEvent.address)"
-        name="address"
-        id="address"
-        type="text"
-        class="form-control"
-        placeholder="Address of event..."
-      />
-    </div>
-    <div class="row">
-      <div class="col-md-6">
+    <div ngModelGroup="location">
+      <div class="form-group">
+        <label for="address">Event Location:</label>
         <input
-          (ngModel)="(newEvent.city)"
-          name="city"
-          id="city"
+          (ngModel)="(newEvent.address)"
+          name="address"
+          id="address"
           type="text"
           class="form-control"
-          placeholder="City..."
+          placeholder="Address of event..."
         />
       </div>
-      <div class="col-md-6">
-        <input
-          (ngModel)="(newEvent.country)"
-          name="country"
-          id="country"
-          type="text"
-          class="form-control"
-          placeholder="Country..."
-        />
+      <div class="row">
+        <div class="col-md-6">
+          <input
+            (ngModel)="(newEvent.city)"
+            name="city"
+            id="city"
+            type="text"
+            class="form-control"
+            placeholder="City..."
+          />
+        </div>
+        <div class="col-md-6">
+          <input
+            (ngModel)="(newEvent.country)"
+            name="country"
+            id="country"
+            type="text"
+            class="form-control"
+            placeholder="Country..."
+          />
+        </div>
       </div>
     </div>
 
@@ -193,7 +194,10 @@
         class="form-control"
         placeholder="url of image..."
       />
-      <img />
+      <img
+        [src]="newEventForm.controls?.['imageUrl']?.value"
+        *ngIf="newEventForm.controls?.['imageUrl']?.valid"
+      />
     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>

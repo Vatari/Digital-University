@@ -1,6 +1,7 @@
+import { NonNullAssert } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ISession } from '../shared/index';
+import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
   templateUrl: './session.component.html',
@@ -26,6 +27,7 @@ export class SessionComponent implements OnInit {
     this.abstract = new FormControl('', [
       Validators.required,
       Validators.maxLength(400),
+      restrictedWords(['foo', 'bar']),
     ]);
 
     this.newSessionForm = new FormGroup({

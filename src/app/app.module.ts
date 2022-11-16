@@ -16,6 +16,7 @@ import {
   CreateEventComponent,
 } from './events/index';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SessionComponent } from './events/session/session.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EventDetailsComponent,
     CreateEventComponent,
     NotFoundComponent,
+    SessionComponent,
   ],
   imports: [
     BrowserModule,

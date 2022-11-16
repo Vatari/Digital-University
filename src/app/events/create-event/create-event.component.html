@@ -11,8 +11,8 @@
       class="form-group"
       [ngClass]="{
         error:
-          newEventForm.controls?.['name']?.invalid &&
-          newEventForm.controls?.['name']?.touched
+          newEventForm?.controls?.['name']?.invalid &&
+          newEventForm?.controls?.['name']?.touched
       }"
     >
       <label for="eventName">Event Name:</label>
@@ -37,8 +37,8 @@
       class="form-group"
       [ngClass]="{
         error:
-          newEventForm.controls?.['date']?.invalid &&
-          newEventForm.controls?.['date']?.touched
+          newEventForm?.controls?.['date']?.invalid &&
+          newEventForm?.controls?.['date']?.touched
       }"
     >
       <label for="eventDate">Event Date:</label>
@@ -63,8 +63,8 @@
       class="form-group"
       [ngClass]="{
         error:
-          newEventForm.controls?.['time']?.invalid &&
-          newEventForm.controls?.['time']?.touched
+          newEventForm?.controls?.['time']?.invalid &&
+          newEventForm?.controls?.['time']?.touched
       }"
     >
       <label for="eventTime">Event Time:</label>
@@ -89,8 +89,8 @@
       class="form-group"
       [ngClass]="{
         error:
-          newEventForm.controls?.['price']?.invalid &&
-          newEventForm.controls?.['price']?.touched
+          newEventForm?.controls?.['price']?.invalid &&
+          newEventForm?.controls?.['price']?.touched
       }"
     >
       <label for="eventPrice">Event Price:</label>
@@ -163,8 +163,8 @@
       class="form-group"
       [ngClass]="{
         error:
-          newEventForm.controls?.['imageUrl']?.invalid &&
-          newEventForm.controls?.['imageUrl']?.touched
+          newEventForm?.controls?.['imageUrl']?.invalid &&
+          newEventForm?.controls?.['imageUrl']?.touched
       }"
     >
       <label for="imageUrl">Image:</label>
@@ -195,7 +195,7 @@
         placeholder="url of image..."
       />
       <img
-        [src]="newEventForm.controls?.['imageUrl']?.value"
+        [src]="newEventForm?.controls?.['imageUrl']?.value"
         *ngIf="newEventForm.controls?.['imageUrl']?.valid"
       />
     </div>

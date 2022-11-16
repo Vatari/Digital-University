@@ -7,11 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-event.component.css'],
 })
 export class CreateEventComponent implements OnInit {
-
-  isNotSaved:boolean = true
+  newEvent: any;
+  isNotSaved: boolean = true;
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  saveEvent(formValues: any) {
+    console.log(formValues);
+  }
 
   cancel() {
     this.router.navigate(['/events']);

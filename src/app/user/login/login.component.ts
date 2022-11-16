@@ -7,6 +7,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  mouseOverLogin: boolean = false;
   constructor(private authService: AuthService, private router: Router) {}
 
   login(formValues: any) {

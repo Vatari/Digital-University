@@ -9,11 +9,11 @@ import { ISession, restrictedWords } from '../shared/index';
 })
 export class SessionComponent implements OnInit {
   newSessionForm!: FormGroup;
-  name!: any;
-  presenter!: any;
-  duration!: any;
-  level!: any;
-  abstract!: any;
+  name: any;
+  presenter: any;
+  duration: any;
+  level: any;
+  abstract: any;
 
   session!: ISession;
 

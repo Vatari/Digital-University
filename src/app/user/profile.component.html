@@ -15,7 +15,15 @@
         }"
       >
         <label for="firstName">First Name:</label>
-        <em *ngIf="!validateFirstName()">Required</em>
+        <em
+          *ngIf="!validateFirstName() && profileForm.controls?.['firstName']?.errors?.['required']"
+          >Required</em
+        >
+        <em
+          *ngIf="!validateFirstName()&& profileForm.controls?.['firstName']?.errors?.['pattern'] "
+          >First name must start with a letter!</em
+        >
+
         <input
           formControlName="firstName"
           id="firstName"
@@ -26,7 +34,14 @@
       </div>
       <div class="form-group" [ngClass]="{ error: !validateLastName() }">
         <label for="lastName">Last Name:</label>
-        <em *ngIf="!validateLastName()">Required</em>
+        <em
+          *ngIf="!validateLastName() && profileForm.controls?.['lastName']?.errors?.['required']"
+          >Required</em
+        >
+        <em
+          *ngIf="!validateLastName()&& profileForm.controls?.['lastName']?.errors?.['pattern'] "
+          >Last name must start with a letter!</em
+        >
         <input
           formControlName="lastName"
           id="lastName"

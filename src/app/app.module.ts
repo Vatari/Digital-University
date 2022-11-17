@@ -14,6 +14,7 @@ import {
   EventThumbnailComponent,
   EventDetailsComponent,
   CreateEventComponent,
+  DurationPipe,
 } from './events/index';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionComponent } from './events/session/session.component';
@@ -32,6 +33,7 @@ import { CollapseWellComponent } from './common/collapse-well/collapse-well.comp
     SessionComponent,
     SessionListComponent,
     CollapseWellComponent,
+    DurationPipe,
   ],
   imports: [
     BrowserModule,

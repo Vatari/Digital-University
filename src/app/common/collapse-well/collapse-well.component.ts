@@ -6,7 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./collapse-well.component.css'],
 })
 export class CollapseWellComponent implements OnInit {
-  @Input() title!: string;
   isVisible: boolean = true;
 
   constructor() {}

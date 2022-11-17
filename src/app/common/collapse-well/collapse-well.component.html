@@ -1,4 +1,7 @@
 <div (click)="toggleContent()" class="well pointable">
-  <h4 class="well-title">{{ title }}</h4>
-  <ng-content *ngIf="isVisible"></ng-content> <!-- Content Projection -->
+  <h4>
+    <ng-content select="[well-title]"></ng-content>
+  </h4>
+  <ng-content *ngIf="isVisible" select="[well-body]"></ng-content>
+  <!-- Content Projection with optional selectors -->
 </div>

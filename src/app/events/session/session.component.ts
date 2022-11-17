@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   UntypedFormControl,
   UntypedFormGroup,
@@ -7,12 +7,13 @@ import {
 import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
+  selector: 'app-session',
   templateUrl: './session.component.html',
   styleUrls: ['./session.component.css'],
 })
 export class SessionComponent implements OnInit {
-
-  declare words: ['foo', 'bar']
+  @Output() saveNewSession = new EventEmitter();
+  declare words: ['foo', 'bar'];
 
   newSessionForm!: UntypedFormGroup;
   name!: any;
@@ -55,5 +56,6 @@ export class SessionComponent implements OnInit {
       abstract: formValues.abstract,
       voters: [],
     };
+    this.saveNewSession.emit(this.session);
   }
 }

@@ -33,7 +33,7 @@ export class SessionComponent implements OnInit {
     this.abstract = new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(400),
-      restrictedWords(this.words),
+      //restrictedWords(this.words),   ----> TODO
     ]);
 
     this.newSessionForm = new UntypedFormGroup({

@@ -18,6 +18,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionComponent } from './events/session/session.component';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
+import { CollapseWellComponent } from './common/collapse-well/collapse-well.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SessionListComponent } from './events/event-details/session-list/sessio
     NotFoundComponent,
     SessionComponent,
     SessionListComponent,
+    CollapseWellComponent,
   ],
   imports: [
     BrowserModule,

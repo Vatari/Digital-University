@@ -41,5 +41,6 @@
   <app-session
     *ngIf="addMode"
     (saveNewSession)="saveNewSession($event)"
+    (cancelCreateSession)="cancelCreateSession()"
   ></app-session>
 </div>

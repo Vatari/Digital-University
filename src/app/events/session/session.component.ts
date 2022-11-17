@@ -13,6 +13,7 @@ import { ISession, restrictedWords } from '../shared/index';
 })
 export class SessionComponent implements OnInit {
   @Output() saveNewSession = new EventEmitter();
+  @Output() cancelCreateSession = new EventEmitter();
   declare words: ['foo', 'bar'];
 
   newSessionForm!: UntypedFormGroup;
@@ -57,5 +58,9 @@ export class SessionComponent implements OnInit {
       voters: [],
     };
     this.saveNewSession.emit(this.session);
+  }
+
+  cancel() {
+    this.cancelCreateSession.emit();
   }
 }

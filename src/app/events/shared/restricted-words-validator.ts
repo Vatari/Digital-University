@@ -1,11 +1,11 @@
-import { FormControl } from '@angular/forms';
+import { FormControl, UntypedFormControl } from '@angular/forms';
+
 
 export function restrictedWords(words: any) {
-  return (control: FormControl): { [key: string]: any } => {
+  return (check: UntypedFormControl): { [key: string]: any } => {
     if (!words) return null as any;
-
     let invalidWords = words
-      .map((w: any) => (control.value.includes(w) ? w : null))
+      .map((w: any) => (check.value.includes(w) ? w : null))
       .filter((w: any) => w != null);
 
     return invalidWords && invalidWords.length > 0

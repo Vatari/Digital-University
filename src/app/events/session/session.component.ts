@@ -1,6 +1,9 @@
-import { NonNullAssert } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
@@ -8,29 +11,32 @@ import { ISession, restrictedWords } from '../shared/index';
   styleUrls: ['./session.component.css'],
 })
 export class SessionComponent implements OnInit {
-  newSessionForm!: FormGroup;
-  name: any;
-  presenter: any;
-  duration: any;
-  level: any;
-  abstract: any;
+
+  declare words: ['foo', 'bar']
+
+  newSessionForm!: UntypedFormGroup;
+  name!: any;
+  presenter!: any;
+  duration!: any;
+  level!: any;
+  abstract!: any;
 
   session!: ISession;
 
   constructor() {}
 
   ngOnInit() {
-    this.name = new FormControl('', Validators.required);
-    this.presenter = new FormControl('', Validators.required);
-    this.duration = new FormControl('', Validators.required);
-    this.level = new FormControl('', Validators.required);
-    this.abstract = new FormControl('', [
+    this.name = new UntypedFormControl('', Validators.required);
+    this.presenter = new UntypedFormControl('', Validators.required);
+    this.duration = new UntypedFormControl('', Validators.required);
+    this.level = new UntypedFormControl('', Validators.required);
+    this.abstract = new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(400),
-      restrictedWords(['foo', 'bar']),
+      restrictedWords(this.words),
     ]);
 
-    this.newSessionForm = new FormGroup({
+    this.newSessionForm = new UntypedFormGroup({
       name: this.name,
       presenter: this.presenter,
       duration: this.duration,

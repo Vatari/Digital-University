@@ -14,10 +14,16 @@
       <div well-title>
         {{ session.name }}
         <i
-          *ngIf="session.voters.length > 3"
+          *ngIf="session.voters.length > 0"
           class="glyphicon glyphicon-heart"
-          style="color: red"
+          style="color: red; padding-left: 25px"
         ></i>
+        <span
+          *ngIf="session.voters && session.voters.length > 0"
+          style="padding-left: 0px"
+        >
+          {{ session.voters.length }}</span
+        >
       </div>
       <div well-body>
         <h6>{{ session.presenter }}</h6>

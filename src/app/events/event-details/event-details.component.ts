@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { IEvent, ISession } from '../shared/index';
 import { EventService } from '../shared/event.service';
+import { TokenService } from 'src/app/user/token.service';
 
 @Component({
   templateUrl: './event-details.component.html',
@@ -15,7 +16,8 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(
     private eventService: EventService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public token: TokenService
   ) {}
 
   ngOnInit(): void {

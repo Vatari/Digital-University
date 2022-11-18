@@ -35,8 +35,14 @@
         <ul class="nav navbar-nav">
           <li>
             <a *ngIf="!auth.isAuth()" [routerLink]="['user/login']">Login</a>
+
             <a *ngIf="auth.isAuth()" [routerLink]="['user/profile']"
               >Welcome {{ auth.currentUser.firstName }}</a
+            >
+          </li>
+          <li>
+            <a *ngIf="!auth.isAuth()" [routerLink]="['user/register']"
+              >Register</a
             >
           </li>
         </ul>

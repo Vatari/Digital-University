@@ -1,0 +1,60 @@
+<h1>New user registration</h1>
+<hr />
+<div class="col-md-4">
+  <form
+    ngNativeValidate
+    #registerForm="ngForm"
+    (ngSubmit)="register(registerForm.value)"
+    autocomplete="off"
+    novalidate
+  >
+    <div class="form-group">
+      <label for="userName">User Name:</label>
+      <em
+        *ngIf="registerForm.controls?.['userName']?.invalid && (registerForm.controls?.['userName']?.touched || mouseOverLogin)"
+        >Required</em
+      >
+      <input
+        ngModel
+        name="userName"
+        required
+        id="userName"
+        type="text"
+        class="form-control"
+        placeholder="User Name..."
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <em
+        *ngIf="registerForm.controls?.['password']?.invalid && (registerForm.controls?.['password']?.touched || mouseOverLogin) "
+        >Required</em
+      >
+      <input
+        ngModel
+        name="password"
+        required
+        id="password"
+        type="password"
+        class="form-control"
+        placeholder="Password..."
+      />
+    </div>
+    <span
+      (mouseenter)="mouseOverLogin = true"
+      (mouseleave)="mouseOverLogin = false"
+    >
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid"
+        class="btn btn-primary"
+      >
+        Register
+      </button>
+    </span>
+
+    <button type="button" (click)="cancel()" class="btn btn-default">
+      Cancel
+    </button>
+  </form>
+</div>

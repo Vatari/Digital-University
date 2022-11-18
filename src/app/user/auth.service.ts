@@ -16,6 +16,15 @@ export class AuthService {
     };
   }
 
+  registerUser(userName: string, password: string) {
+    this.currentUser = {
+      id: 1,
+      userName: userName,
+      firstName: 'John',
+      lastName: 'Papa',
+    };
+  }
+
   constructor() {}
   isAuth() {
     return !!this.currentUser;

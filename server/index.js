@@ -7,7 +7,7 @@ const cors = require("./middlewares/cors");
 const auth = require("./middlewares/auth");
 const catalogController = require("./controllers/catalog");
 const usersController = require("./controllers/users");
-const dbUrl = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.qfalkak.mongodb.net/cars`;
+const dbUrl = "mongodb://localhost:27017/events";
 
 start();
 

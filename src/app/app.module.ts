@@ -22,6 +22,7 @@ import { SessionComponent } from './events/session/session.component';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import { CollapseWellComponent } from './common/collapse-well/collapse-well.component';
 import { LikeComponent } from './events/event-details/like/like.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { LikeComponent } from './events/event-details/like/like.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
   ],
   providers: [{ provide: 'canDeactivateCreateEvent', useValue: checkState }],
   bootstrap: [AppComponent],

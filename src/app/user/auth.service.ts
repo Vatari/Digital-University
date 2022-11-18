@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 import { IUser } from './user-model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
+import { NotificationService } from '../common/toastr.service';
+
+const HOST = 'http://localhost:4000';
 
 @Injectable({
   providedIn: 'root',
@@ -7,27 +12,45 @@ import { IUser } from './user-model';
 export class AuthService {
   currentUser!: IUser;
 
-  loginUser(userName: string, password: string) {
-    this.currentUser = {
-      id: 1,
-      userName: userName,
-      firstName: 'John',
-      lastName: 'Papa',
-    };
-  }
-
-  registerUser(userName: string, password: string) {
-    this.currentUser = {
-      id: 1,
-      userName: userName,
-      firstName: 'John',
-      lastName: 'Papa',
-    };
-  }
-
-  constructor() {}
+  constructor(private http: HttpClient, private toastr: NotificationService) {}
   isAuth() {
     return !!this.currentUser;
+  }
+
+  loginUser(userName: string, password: string) {
+    let loginData = { username: userName, password: password };
+
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: loginData,
+    };
+    return this.http
+      .post<any>(HOST + '/users/login', loginData, options)
+      .subscribe(
+        (data) => this.toastr.success('Login successfull'),
+
+        (error) => this.toastr.error(error.error.message)
+      );
+  }
+
+  registerUser(userName: string, password: string): Observable<any> {
+    let registerData = { username: userName, password: password };
+
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: registerData,
+    };
+    return this.http
+      .post<any>(HOST + '/users/register', registerData, options)
+      .pipe(
+        tap((data) => {
+          this.currentUser = <IUser>data['user'];
+        })
+      );
   }
 
   updateCurrentUser(firstName: string, lastName: string) {

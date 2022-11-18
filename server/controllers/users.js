@@ -5,11 +5,18 @@ const { mapErrors } = require("../util/mappers");
 
 router.post("/register", isGuest(), async (req, res) => {
   try {
-    if (req.body.password.trim() == "" || req.body.username.trim() == "") {
-      throw new Error("Username and password are required");
+    if (
+      req.body.password.trim() == "" ||
+      req.body.username.trim() == "" ||
+      req.body.firstName.trim() == "" ||
+      req.body.lastName.trim() == ""
+    ) {
+      throw new Error("All fields are required");
     }
     const result = await register(
       req.body.username.trim().toLowerCase(),
+      req.body.firstName.trim(),
+      req.body.lastName.trim(),
       req.body.password.trim()
     );
     res.status(201).json(result);

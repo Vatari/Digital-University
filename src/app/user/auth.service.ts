@@ -13,9 +13,11 @@ export class AuthService {
   currentUser!: IUser;
 
   constructor(private http: HttpClient, private toastr: NotificationService) {}
-  isAuth() {
+  /*   isAuth() {
     return !!this.currentUser;
-  }
+  } */
+
+  isAuth: boolean = false;
 
   loginUser(userName: string, password: string) {
     let loginData = { username: userName, password: password };
@@ -28,15 +30,29 @@ export class AuthService {
     };
     return this.http
       .post<any>(HOST + '/users/login', loginData, options)
-      .subscribe(
-        (data) => this.toastr.success('Login successfull'),
-
-        (error) => this.toastr.error(error.error.message)
-      );
+      .subscribe({
+        next: (data) => {
+          this.toastr.success('Login successfull');
+          this.isAuth = true;
+        },
+        error: (err) => {
+          this.toastr.error(err.error.message);
+        },
+      });
   }
 
-  registerUser(userName: string, password: string): Observable<any> {
-    let registerData = { username: userName, password: password };
+  registerUser(
+    userName: string,
+    firstName: string,
+    lastName: string,
+    password: string
+  ) {
+    let registerData = {
+      username: userName,
+      firstName: firstName,
+      lastName: lastName,
+      password: password,
+    };
 
     let options = {
       headers: new HttpHeaders({
@@ -46,11 +62,15 @@ export class AuthService {
     };
     return this.http
       .post<any>(HOST + '/users/register', registerData, options)
-      .pipe(
-        tap((data) => {
-          this.currentUser = <IUser>data['user'];
-        })
-      );
+      .subscribe({
+        next: (data) => {
+          this.toastr.success('Registration successfull');
+          this.isAuth = true;
+        },
+        error: (err) => {
+          this.toastr.error(err.error.message);
+        },
+      });
   }
 
   updateCurrentUser(firstName: string, lastName: string) {

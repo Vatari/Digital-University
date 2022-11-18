@@ -1,6 +1,6 @@
 <div class="row" *ngFor="let session of visibleSessions">
   <div class="col-md-1">
-    <div *ngIf="auth.isAuth()">
+    <div *ngIf="auth.isAuth">
       <app-like
         (like)="toggleLike(session)"
         [count]="session.voters.length"

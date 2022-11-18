@@ -13,8 +13,13 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   register(formValues: any) {
-    
-    this.authService.registerUser(formValues.userName, formValues.password).subscribe();
+    this.authService
+      .registerUser(
+        formValues.userName,
+        formValues.firstName,
+        formValues.lastName,
+        formValues.password
+      )
     this.router.navigate(['events']);
   }
 

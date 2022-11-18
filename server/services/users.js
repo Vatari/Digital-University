@@ -5,7 +5,7 @@ const User = require("../models/User");
 const JWT_SECRET = "askldjaskldjskldjaskldjskldjsdklfg";
 const blacklist = [];
 
-async function register(username, password) {
+async function register(username, firstName, lastName, password) {
   const existing = await User.findOne({
     username: new RegExp(`^${username}$`, "i"),
   });
@@ -14,6 +14,8 @@ async function register(username, password) {
   }
   const user = new User({
     username,
+    firstName,
+    lastName,
     hashedPassword: await bcrypt.hash(password, 10),
   });
 

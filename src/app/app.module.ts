@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionComponent } from './events/session/session.component';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import { CollapseWellComponent } from './common/collapse-well/collapse-well.component';
+import { LikeComponent } from './events/event-details/like/like.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CollapseWellComponent } from './common/collapse-well/collapse-well.comp
     SessionListComponent,
     CollapseWellComponent,
     DurationPipe,
+    LikeComponent,
   ],
   imports: [
     BrowserModule,

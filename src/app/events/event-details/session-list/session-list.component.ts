@@ -1,5 +1,6 @@
 import { sequence } from '@angular/animations';
 import { Component, Input, OnChanges } from '@angular/core';
+import { AuthService } from 'src/app/user/auth.service';
 import { ISession } from '../../shared';
 
 @Component({
@@ -13,7 +14,7 @@ export class SessionListComponent implements OnChanges {
   @Input() sortBy!: string;
   visibleSessions: ISession[] = [];
 
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
   ngOnChanges() {
     if (this.sessions) {
@@ -23,6 +24,28 @@ export class SessionListComponent implements OnChanges {
         : this.visibleSessions.sort(sortByVotesDesc);
     }
   }
+
+  toggleLike(session: ISession) {
+    if (this.userHasLiked(session)) {
+      this.likeService.deleteUserLike(session, this.auth.currentUser.userName);
+    } else {
+      this.likeService.addUserLike(session, this.auth.currentUser.userName);
+    }
+    if (this.sortBy === 'votes') {
+      this.visibleSessions.sort(sortByVotesDesc);
+    }
+
+    userHasLiked(session: ISession) {
+      return this.likeService.userHasLiked(session, this.auth.currentUser.userName)
+    }
+
+  }
+
+
+
+
+
+
   filterSessions(filtered: string) {
     if (filtered === 'all') {
       this.visibleSessions = this.sessions.slice(0);
@@ -30,6 +53,7 @@ export class SessionListComponent implements OnChanges {
       this.visibleSessions = this.sessions.filter((s) => {
         return s.level.toLocaleLowerCase() === filtered;
       });
+     
     }
   }
 }

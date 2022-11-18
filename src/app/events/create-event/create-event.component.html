@@ -112,9 +112,12 @@
         placeholder="event price..."
       />
     </div>
-    <div ngModelGroup="location">
+    <div ngModelGroup="location" #locationGroup="ngModelGroup" validateLocation>
       <div class="form-group">
         <label for="address">Event Location:</label>
+        <em *ngIf="locationGroup?.invalid && locationGroup?.touched"
+          >Full location or onlineUrl is missing</em
+        >
         <input
           (ngModel)="(newEvent.address)"
           name="address"
@@ -130,8 +133,6 @@
             (ngModel)="(newEvent.city)"
             name="city"
             id="city"
-            type="text"
-            class="form-control"
             placeholder="City..."
           />
         </div>
@@ -156,6 +157,7 @@
         id="onlineUrl"
         type="text"
         class="form-control"
+        (change)="(locationGroup?.control?.controls?.['address']?.updateValueAndValidity())"
         placeholder="Online Url..."
       />
     </div>

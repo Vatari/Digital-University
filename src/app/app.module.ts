@@ -15,6 +15,7 @@ import {
   EventDetailsComponent,
   CreateEventComponent,
   DurationPipe,
+  LocationValidator,
 } from './events/index';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionComponent } from './events/session/session.component';
@@ -36,6 +37,7 @@ import { LikeComponent } from './events/event-details/like/like.component';
     CollapseWellComponent,
     DurationPipe,
     LikeComponent,
+    LocationValidator,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { sequence } from '@angular/animations';
 import { Component, Input, OnChanges } from '@angular/core';
 import { AuthService } from 'src/app/user/auth.service';
+import { TokenService } from 'src/app/user/token.service';
 import { ISession } from '../../shared';
 import { LikeService } from '../like.service';
 
@@ -15,7 +16,11 @@ export class SessionListComponent implements OnChanges {
   @Input() sortBy!: string;
   visibleSessions: ISession[] = [];
 
-  constructor(public auth: AuthService, private likeService: LikeService) {}
+  constructor(
+    public auth: AuthService,
+    private likeService: LikeService,
+    public token: TokenService
+  ) {}
 
   ngOnChanges() {
     if (this.sessions) {
@@ -28,9 +33,9 @@ export class SessionListComponent implements OnChanges {
 
   toggleLike(session: ISession) {
     if (this.userHasLiked(session)) {
-      this.likeService.deleteUserLike(session, this.auth.currentUser.userName);
+      this.likeService.deleteUserLike(session, this.auth.currentUser.username);
     } else {
-      this.likeService.addUserLike(session, this.auth.currentUser.userName);
+      this.likeService.addUserLike(session, this.auth.currentUser.username);
     }
     if (this.sortBy === 'votes') {
       this.visibleSessions.sort(sortByVotesDesc);
@@ -39,7 +44,7 @@ export class SessionListComponent implements OnChanges {
   userHasLiked(session: ISession) {
     return this.likeService.userHasLiked(
       session,
-      this.auth.currentUser.userName
+      this.auth.currentUser.username
     );
   }
 

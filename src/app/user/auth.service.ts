@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { IUser } from './user-model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
 import { NotificationService } from '../common/toastr.service';
+import { Router } from '@angular/router';
+import { TokenService } from './token.service';
 
 const HOST = 'http://localhost:4000';
 
@@ -12,12 +13,12 @@ const HOST = 'http://localhost:4000';
 export class AuthService {
   currentUser!: IUser;
 
-  constructor(private http: HttpClient, private toastr: NotificationService) {}
-  /*   isAuth() {
-    return !!this.currentUser;
-  } */
-
-  isAuth: boolean = false;
+  constructor(
+    private http: HttpClient,
+    private toastr: NotificationService,
+    private router: Router,
+    private tokenService: TokenService
+  ) {}
 
   loginUser(userName: string, password: string) {
     let loginData = { username: userName, password: password };
@@ -33,7 +34,8 @@ export class AuthService {
       .subscribe({
         next: (data) => {
           this.toastr.success('Login successfull');
-          this.isAuth = true;
+          this.currentUser = <IUser>data;
+          this.tokenService.saveToken(data.accessToken);
         },
         error: (err) => {
           this.toastr.error(err.error.message);
@@ -42,13 +44,13 @@ export class AuthService {
   }
 
   registerUser(
-    userName: string,
+    username: string,
     firstName: string,
     lastName: string,
     password: string
   ) {
     let registerData = {
-      username: userName,
+      username: username,
       firstName: firstName,
       lastName: lastName,
       password: password,
@@ -65,12 +67,19 @@ export class AuthService {
       .subscribe({
         next: (data) => {
           this.toastr.success('Registration successfull');
-          this.isAuth = true;
+          this.tokenService.saveToken(data.accessToken);
+
+          this.currentUser = <IUser>data;
         },
         error: (err) => {
           this.toastr.error(err.error.message);
         },
       });
+  }
+
+  logoutUser() {
+    this.tokenService.signOut();
+    this.router.navigate(['events']);
   }
 
   updateCurrentUser(firstName: string, lastName: string) {

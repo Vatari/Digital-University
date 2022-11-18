@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EventService, ISession } from '../events';
 import { AuthService } from '../user/auth.service';
+import { TokenService } from '../user/token.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,12 +14,16 @@ export class NavComponent implements OnInit {
 
   foundSessions!: ISession[];
 
-  constructor(public auth: AuthService, private eventService: EventService) {}
+  constructor(
+    public token: TokenService,
+    private eventService: EventService,
+    public auth: AuthService
+  ) {}
 
   ngOnInit(): void {}
 
   searchSessions(searchText: string) {
-  /*   this.eventService.searchSessions(searchText).subscribe((sessions: any) => {
+    /*   this.eventService.searchSessions(searchText).subscribe((sessions: any) => {
       this.foundSessions = sessions;
       console.log(sessions);
     }); */

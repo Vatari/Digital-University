@@ -15,7 +15,10 @@
           >
         </li>
         <li>
-          <a [routerLink]="['/events/new']" routerLinkActive="active"
+          <a
+            *ngIf="token.getToken()"
+            [routerLink]="['/events/new']"
+            routerLinkActive="active"
             >Create Event</a
           >
         </li>
@@ -34,17 +37,24 @@
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>
-            <a *ngIf="!auth.isAuth" [routerLink]="['user/login']">Login</a>
+            <a *ngIf="!token.getToken()" [routerLink]="['user/login']">Login</a>
 
-            <a *ngIf="auth.isAuth" [routerLink]="['user/profile']"
-              >Welcome {{ auth.currentUser }}</a
+            <a *ngIf="token.getToken()" [routerLink]="['user/profile']"
+              >Welcome {{ auth.currentUser.username }}</a
             >
           </li>
           <li>
-            <a *ngIf="!auth.isAuth" [routerLink]="['user/register']"
+            <a *ngIf="!token.getToken()" [routerLink]="['user/register']"
               >Register</a
             >
           </li>
+          <button
+            *ngIf="token.getToken()"
+            id="logoutBtn"
+            (click)="auth.logoutUser()"
+          >
+            Logout
+          </button>
         </ul>
       </div>
       <form

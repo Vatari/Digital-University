@@ -44,14 +44,18 @@ function logout(token) {
 
 function createSession(user) {
   const payload = {
-    email: user.email,
+    username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
     _id: user._id,
   };
 
   const accessToken = jwt.sign(payload, JWT_SECRET);
 
   return {
-    email: user.email,
+    username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
     _id: user._id,
     accessToken,
   };
@@ -63,7 +67,9 @@ function verifySession(token) {
   }
   const payload = jwt.verify(token, JWT_SECRET);
   return {
-    email: payload.email,
+    username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
     _id: payload._id,
     token,
   };

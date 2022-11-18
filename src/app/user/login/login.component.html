@@ -9,16 +9,16 @@
     novalidate
   >
     <div class="form-group">
-      <label for="userName">User Name:</label>
+      <label for="username">User Name:</label>
       <em
-        *ngIf="loginForm.controls?.['userName']?.invalid && (loginForm.controls?.['userName']?.touched || mouseOverLogin)"
+        *ngIf="loginForm.controls?.['username']?.invalid && (loginForm.controls?.['username']?.touched || mouseOverLogin)"
         >Required</em
       >
       <input
         ngModel
-        name="userName"
+        name="username"
         required
-        id="userName"
+        id="username"
         type="text"
         class="form-control"
         placeholder="User Name..."

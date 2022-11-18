@@ -1,7 +1,7 @@
 <div class="row" *ngFor="let session of visibleSessions">
   <div class="col-md-1">
     <app-like
-      like()="toggleLike(session)"
+      (like)="toggleLike(session)"
       [count]="session.voters.length"
       [liked]="userHasLiked(session)"
     >

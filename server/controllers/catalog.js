@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const api = require("../services/car");
+const api = require("../services/event");
 const { isAuth, isOwner } = require("../middlewares/guards");
 const { mapErrors } = require("../util/mappers");
 const preload = require("../middlewares/preload");
@@ -14,16 +14,16 @@ router.get("/", async (req, res) => {
     res.status(400).json({ message: "Bad request" });
   }
 });
-router.post("/", isAuth(), async (req, res) => {
+router.post("/create", isAuth(), async (req, res) => {
   const item = {
-    brand: req.body.brand,
-    model: req.body.model,
-    description: req.body.description,
-    year: req.body.year,
-    imageUrl: req.body.imageUrl,
+    name: req.body.name,
+    date: req.body.date,
+    time: req.body.time,
     price: req.body.price,
-    phone: req.body.phone,
-    owner: req.user._id,
+    imageUrl: req.body.imageUrl,
+    location: req.body.location,
+    onlineUrl: req.body.onlineUrl,
+    sessions: req.body.sessions,
   };
 
   try {

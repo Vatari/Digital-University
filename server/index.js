@@ -29,7 +29,7 @@ async function start() {
   app.use(express.json());
   app.use(cors());
   app.use(auth());
-  app.use("/data/cars", catalogController);
+  app.use("/events", catalogController);
   app.use("/users", usersController);
 
   app.listen(4000, () =>

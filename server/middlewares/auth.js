@@ -7,7 +7,7 @@ module.exports = () => (req, res, next) => {
     if (token) {
       const payload = verifySession(token);
       req.user = {
-        email: payload.email,
+        username: payload.username,
         _id: payload._id,
         token,
       };

@@ -23,6 +23,7 @@ import { SessionListComponent } from './events/event-details/session-list/sessio
 import { CollapseWellComponent } from './common/collapse-well/collapse-well.component';
 import { LikeComponent } from './events/event-details/like/like.component';
 import { HttpClientModule } from '@angular/common/http';
+import { authInterceptorProviders } from './auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,10 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
   ],
-  providers: [{ provide: 'canDeactivateCreateEvent', useValue: checkState }],
+  providers: [
+    { provide: 'canDeactivateCreateEvent', useValue: checkState },
+    authInterceptorProviders,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

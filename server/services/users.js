@@ -67,9 +67,9 @@ function verifySession(token) {
   }
   const payload = jwt.verify(token, JWT_SECRET);
   return {
-    username: user.username,
-    firstName: user.firstName,
-    lastName: user.lastName,
+    username: payload.username,
+    firstName: payload.firstName,
+    lastName: payload.lastName,
     _id: payload._id,
     token,
   };

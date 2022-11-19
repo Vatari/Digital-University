@@ -1,19 +1,24 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { NotificationService } from 'src/app/common/toastr.service';
 import { IEvent, ISession } from './interfaces/event-model';
+import { map } from 'rxjs/operators';
+
+const HOST = 'http://localhost:4000';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
-  constructor() {}
+  constructor(private http: HttpClient, private toastr: NotificationService) {}
 
   getEvents(): Observable<IEvent[]> {
+    return this.http.get<IEvent[]>(HOST + '/events');
+
     let subject = new Subject<IEvent[]>();
-    setTimeout(() => {
-      subject.next(EVENTS);
-      subject.complete();
-    }, 100);
+    subject.next(EVENTS);
+    subject.complete();
     return subject;
   }
   getEvent(id: number) {
@@ -22,9 +27,29 @@ export class EventService {
   }
 
   saveEvent(event: any) {
-    event.id = 999;
+    // event.id = 999;
     event.session = [];
     EVENTS.push(event);
+
+    /*     let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        accessToken: `${token}`,
+      }),
+      body: event,
+    }; */
+
+    return this.http.post<any>(HOST + '/events/create', event).subscribe({
+      next: (data) => {
+        this.toastr.success('Success');
+        console.log(data);
+
+        //this.tokenService.saveToken(data.accessToken);
+      },
+      error: (err) => {
+        this.toastr.error(err.error.message);
+      },
+    });
   }
 
   updateEvent(event: any) {

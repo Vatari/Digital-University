@@ -5,23 +5,22 @@ const {
 } = require("mongoose");
 
 const itemSchema = new Schema({
-  brand: { type: String, required: [true, "Field brand is required"] },
-  model: { type: String, required: true },
-
-  description: {
-    type: String,
-    required: true,
-    minlength: [8, "Description must be at least 8 characters"],
-  },
-  year: {
-    type: Number,
-    required: true,
-    min: [1950, "Year must be between 1950 and 2050"],
-    max: [2050, "Year must be between 1950 and 2050"],
-  },
-  imageUrl: { type: String, required: true },
+  name: { type: String, required: [true, "Name is required"] },
+  date: { type: String, required: [true, "Name is required"] },
+  time: { type: String, required: [true, "Time is required"] },
   price: { type: Number, required: true },
-  phone: { type: String, required: true },
+  imageUrl: { type: String, required: true },
+  location: {
+    address: { type: String, required: [true, "Address is required"] },
+    city: { type: String, required: [true, "City is required"] },
+    country: { type: String, required: [true, "Country is required"] },
+  },
+  onlineUrl: {
+    type: String,
+    required: [true, "OnlineUrl is reguired is required"],
+  },
+
+  sessions: { type: [ObjectId], ref: "Session" },
   owner: { type: ObjectId, ref: "User" },
 });
 

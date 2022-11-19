@@ -1,16 +1,16 @@
 export interface IEvent {
-  id: number;
+  _id: string;
   name: string;
   date: Date;
   time: string;
   price: number;
   imageUrl: string;
-  location?: {
+  location: {
     address: string;
     city: string;
     country: string;
   };
-  onlineUrl?: string;
+  onlineUrl: string;
   sessions: ISession[];
 }
 

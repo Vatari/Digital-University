@@ -11,20 +11,23 @@ const HOST = 'http://localhost:4000';
   providedIn: 'root',
 })
 export class EventService {
+  event!: IEvent;
   constructor(private http: HttpClient, private toastr: NotificationService) {}
 
   getEvents(): Observable<IEvent[]> {
     return this.http.get<IEvent[]>(HOST + '/events');
   }
-  getEvent(id: number) {
+  getEvent(id: string): Observable<IEvent> {
     //:IEvent
-    return EVENTS.find((ev) => ev.id === id);
+    return this.http.get<IEvent>(HOST + '/events/' + id);
+
+    //return EVENTS.find((ev) => ev.id === id);
   }
 
-  saveEvent(event: any) {
+  saveEvent(event: IEvent) {
     // event.id = 999;
-    event.session = [];
-    EVENTS.push(event);
+    event.sessions = [];
+    //EVENTS.push(event);
 
     /*     let options = {
       headers: new HttpHeaders({
@@ -34,7 +37,7 @@ export class EventService {
       body: event,
     }; */
 
-    return this.http.post<any>(HOST + '/events/create', event).subscribe({
+    return this.http.post<IEvent>(HOST + '/events/create', event).subscribe({
       next: (data) => {
         this.toastr.success('Success');
         console.log(data);
@@ -48,11 +51,11 @@ export class EventService {
   }
 
   updateEvent(event: any) {
-    let index = EVENTS.findIndex((i) => (i.id = event.id));
+    /*     let index = EVENTS.findIndex((i) => (i.id = event.id));
     EVENTS[index] = event;
   }
 
-  searchSessions(searchText: string) {
+    searchSessions(searchText: string) {
     let text = searchText.toLocaleLowerCase();
     let result: ISession[] = [];
     EVENTS.forEach((ev) => {
@@ -60,7 +63,7 @@ export class EventService {
         (session) => session.name.toLocaleLowerCase().indexOf(text) > -1
       );
       matchedSessions = matchedSessions.map((session: any) => {
-        session.evId = ev.id;
+        session.evId = ev._id;
         return session;
       });
       result = result.concat(matchedSessions);
@@ -69,12 +72,13 @@ export class EventService {
     setTimeout(() => {
       emitter.emit(result);
     }, 100);
+  } */
   }
 }
 
-const EVENTS: IEvent[] = [
+/* let EVENTS: IEvent[] = [
   {
-    id: 1,
+    _id: 1,
     name: 'Angular Connect',
     date: new Date('9/26/2036'),
     time: '10:00 am',
@@ -382,3 +386,4 @@ const EVENTS: IEvent[] = [
     ],
   },
 ];
+ */

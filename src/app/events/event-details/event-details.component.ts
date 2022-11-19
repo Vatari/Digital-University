@@ -3,13 +3,14 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { IEvent, ISession } from '../shared/index';
 import { EventService } from '../shared/event.service';
 import { TokenService } from 'src/app/user/token.service';
+import { Observable } from 'rxjs';
 
 @Component({
   templateUrl: './event-details.component.html',
   styleUrls: ['./event-details.component.css'],
 })
 export class EventDetailsComponent implements OnInit {
-  event: IEvent | undefined;
+  event!: Observable<IEvent>;
   addMode: boolean = false;
   filterBy: string = 'all';
   sortBy: string = 'name';
@@ -20,9 +21,9 @@ export class EventDetailsComponent implements OnInit {
     public token: TokenService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
+      this.event = this.eventService.getEvent(params['_id']);
       this.addMode = false;
     });
   }
@@ -34,10 +35,10 @@ export class EventDetailsComponent implements OnInit {
   saveNewSession(session: ISession) {
     const nextId = Math.max.apply(
       null,
-      this.event!.sessions.map((s) => s.id)
+      this.event.sessions.map((s) => s.id)
     );
     session.id = nextId + 1;
-    this.event?.sessions.push(session);
+    this.event.sessions.push(session);
     this.eventService.updateEvent(this.event);
     this.addMode = false;
   }

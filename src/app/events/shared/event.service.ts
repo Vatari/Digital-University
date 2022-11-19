@@ -15,11 +15,6 @@ export class EventService {
 
   getEvents(): Observable<IEvent[]> {
     return this.http.get<IEvent[]>(HOST + '/events');
-
-    let subject = new Subject<IEvent[]>();
-    subject.next(EVENTS);
-    subject.complete();
-    return subject;
   }
   getEvent(id: number) {
     //:IEvent

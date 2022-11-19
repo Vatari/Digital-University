@@ -80,6 +80,7 @@ export class AuthService {
   logoutUser() {
     this.tokenService.signOut();
     this.router.navigate(['events']);
+    this.http.get(HOST + '/users/logout');
   }
 
   updateCurrentUser(firstName: string, lastName: string) {

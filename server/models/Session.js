@@ -13,7 +13,9 @@ const sessionSchema = new Schema({
   abstract: { type: String, required: true },
 
   voters: { type: [ObjectId], ref: "User" },
-  owner: { type: ObjectId, ref: "User" },
+  owner: { type: [ObjectId], ref: "User" },
+
+  parentId: { type: [ObjectId], ref: "Item" },
 });
 
 const Session = model("Session", sessionSchema);

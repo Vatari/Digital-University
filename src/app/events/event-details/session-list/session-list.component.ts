@@ -1,5 +1,4 @@
-import { sequence } from '@angular/animations';
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/user/auth.service';
 import { TokenService } from 'src/app/user/token.service';
 import { ISession } from '../../shared';
@@ -10,7 +9,7 @@ import { LikeService } from '../like.service';
   templateUrl: './session-list.component.html',
   styleUrls: ['./session-list.component.css'],
 })
-export class SessionListComponent implements OnChanges {
+export class SessionListComponent implements OnInit {
   @Input() sessions!: ISession[];
   @Input() filterBy!: string;
   @Input() sortBy!: string;
@@ -22,7 +21,9 @@ export class SessionListComponent implements OnChanges {
     public token: TokenService
   ) {}
 
-  ngOnChanges() {
+  ngOnInit() {
+    console.log(this.sessions);
+
     if (this.sessions) {
       this.filterSessions(this.filterBy);
       this.sortBy === 'name'

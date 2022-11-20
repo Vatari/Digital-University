@@ -2,7 +2,8 @@ const router = require("express").Router();
 const api = require("../services/event");
 const { isAuth, isOwner } = require("../middlewares/guards");
 const { mapErrors } = require("../util/mappers");
-const preload = require("../middlewares/preload");
+const preload = require("../middlewares/preItem");
+const { getById } = require("../services/event");
 
 router.get("/", async (req, res) => {
   /*   const data = await api.getAll();
@@ -14,6 +15,19 @@ router.get("/", async (req, res) => {
     res.status(400).json({ message: "Bad request" });
   }
 });
+
+router.get("/:id/sessions", async (req, res) => {
+  const itemId = req.params.id
+  /*   const data = await api.getAll();
+  res.json(data); */
+
+  try {
+    res.json(await api.getSessions(itemId));
+  } catch (err) {
+    res.status(400).json({ message: "Bad request" });
+  }
+});
+
 router.post("/create", isAuth(), async (req, res) => {
   const item = {
     name: req.body.name,
@@ -24,10 +38,35 @@ router.post("/create", isAuth(), async (req, res) => {
     location: req.body.location,
     onlineUrl: req.body.onlineUrl,
     sessions: req.body.sessions,
+    owner: req.user._id,
   };
 
   try {
     const result = await api.create(item);
+    res.status(201).json(result);
+  } catch (err) {
+    const error = mapErrors(err)
+      .map((e) => e.msg)
+      .join("\n");
+    res.status(400).json({ message: error });
+  }
+});
+
+router.post("/create/session", isAuth(), async (req, res) => {
+  const session = {
+    name: req.body.name,
+    presenter: req.body.presenter,
+    duration: req.body.duration,
+    level: req.body.level,
+    abstract: req.body.abstract,
+    voters: req.body.voters,
+    owner: req.user._id,
+    parentId: req.body._id,
+  };
+
+  try {
+    const result = await api.createSession(session);
+
     res.status(201).json(result);
   } catch (err) {
     const error = mapErrors(err)

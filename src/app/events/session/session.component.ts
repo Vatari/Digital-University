@@ -49,7 +49,7 @@ export class SessionComponent implements OnInit {
 
   saveSession(formValues: any) {
     this.session = {
-      id: undefined!,
+      _id: undefined!,
       name: formValues.name,
       duration: +formValues.duration,
       level: formValues.level,

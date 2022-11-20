@@ -3,7 +3,6 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { NotificationService } from 'src/app/common/toastr.service';
 import { IEvent, ISession } from './interfaces/event-model';
-import { map } from 'rxjs/operators';
 
 const HOST = 'http://localhost:4000';
 
@@ -11,14 +10,14 @@ const HOST = 'http://localhost:4000';
   providedIn: 'root',
 })
 export class EventService {
-  event!: IEvent;
+  //event!: IEvent;
+
   constructor(private http: HttpClient, private toastr: NotificationService) {}
 
   getEvents(): Observable<IEvent[]> {
     return this.http.get<IEvent[]>(HOST + '/events');
   }
   getEvent(id: string): Observable<IEvent> {
-    
     //:IEvent
     return this.http.get<IEvent>(HOST + '/events/' + id);
 
@@ -27,7 +26,7 @@ export class EventService {
 
   saveEvent(event: IEvent) {
     // event.id = 999;
-    event.sessions = [];
+   // event.sessions = [];
     //EVENTS.push(event);
 
     /*     let options = {
@@ -38,7 +37,7 @@ export class EventService {
       body: event,
     }; */
 
-    return this.http.post<IEvent>(HOST + '/events/create', event).subscribe({
+    return this.http.post<IEvent>(HOST + '/events/create/', event).subscribe({
       next: (data) => {
         this.toastr.success('Success');
         console.log(data);
@@ -51,8 +50,37 @@ export class EventService {
     });
   }
 
-  updateEvent(event: any) {
-    /*     let index = EVENTS.findIndex((i) => (i.id = event.id));
+  createSession(session: ISession) {
+    return this.http
+      .post<ISession>(HOST + '/events/create/session', session)
+      .subscribe({
+        next: (data) => {
+          this.toastr.success('Success');
+        },
+        error: (err) => {
+          this.toastr.error(err.error.message);
+        },
+      });
+  }
+
+  loadSessions(id:string): Observable<ISession[]> {
+    return this.http.get<ISession[]>(HOST + `/events/${id}/sessions`);
+  }
+
+  updateEvent(event: IEvent) {
+    return this.http
+      .post<IEvent>(HOST + '/create/session', event.sessions)
+      .subscribe({
+        next: (data) => {
+          this.toastr.success('Success');
+        },
+        error: (err) => {
+          this.toastr.error(err.error.message);
+        },
+      });
+  }
+
+  /*     let index = EVENTS.findIndex((i) => (i.id = event.id));
     EVENTS[index] = event;
   }
 
@@ -74,7 +102,6 @@ export class EventService {
       emitter.emit(result);
     }, 100);
   } */
-  }
 }
 
 /* let EVENTS: IEvent[] = [

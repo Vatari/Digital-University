@@ -1,4 +1,5 @@
 const Item = require("../models/Item");
+const Session = require("../models/Session");
 
 async function getAll(query) {
   if (query) {
@@ -15,6 +16,10 @@ async function getAll(query) {
   return Item.find({});
 }
 
+function getSessions(itemId) {
+  return Session.find({parentId: itemId}).lean();
+}
+
 async function getByYear(query) {
   if (query) {
     const search = query.split("=")[1].slice(1, -1);
@@ -29,6 +34,13 @@ function getById(id) {
 
 async function create(item) {
   const result = new Item(item);
+
+  await result.save();
+  return result;
+}
+
+async function createSession(session) {
+  const result = new Session(session);
 
   await result.save();
   return result;
@@ -60,4 +72,6 @@ module.exports = {
   update,
   deleteById,
   getByYear,
+  createSession,
+  getSessions,
 };

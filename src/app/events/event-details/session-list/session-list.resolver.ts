@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { EventService } from '../shared';
+import { map } from 'rxjs';
+import { EventService } from '../../shared';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EventDetailsResolver implements Resolve<any> {
+export class SessionListResolver implements Resolve<any> {
   constructor(private eventService: EventService) {}
-
   resolve(route: ActivatedRouteSnapshot) {
-    return this.eventService.getEvent(route.params['id']);
+    return this.eventService.loadSessions(route.params['id']).pipe(map((sessions) => sessions));
   }
 }

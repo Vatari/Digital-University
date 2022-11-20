@@ -9,10 +9,12 @@ import { TokenService } from 'src/app/user/token.service';
   styleUrls: ['./event-details.component.css'],
 })
 export class EventDetailsComponent implements OnInit {
+  id!: any;
   event!: IEvent;
   addMode: boolean = false;
   filterBy: string = 'all';
   sortBy: string = 'name';
+  sessions!: ISession[]
 
   constructor(
     private eventService: EventService,
@@ -22,6 +24,8 @@ export class EventDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.event = this.route.snapshot.data['event'];
+    this.id = this.route.snapshot.params['id'];
+    this.sessions = this.route.snapshot.data['sessions'];
     this.addMode = false;
   }
 
@@ -30,10 +34,10 @@ export class EventDetailsComponent implements OnInit {
   }
 
   saveNewSession(session: ISession) {
-    this.event.sessions.map((s) => s.id);
+    session._id = this.id;
 
-    // this.event.sessions.push(session);
-    this.eventService.updateEvent(this.event);
+    this.eventService.createSession(session);
+
     this.addMode = false;
   }
   cancelCreateSession() {

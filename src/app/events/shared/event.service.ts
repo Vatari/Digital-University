@@ -18,6 +18,7 @@ export class EventService {
     return this.http.get<IEvent[]>(HOST + '/events');
   }
   getEvent(id: string): Observable<IEvent> {
+    
     //:IEvent
     return this.http.get<IEvent>(HOST + '/events/' + id);
 

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { EventDetailsResolver } from './events/event-details/event-details.resolver';
 import { RouteActivatorService } from './events/event-details/route-activator.service';
 
 import {
@@ -25,6 +26,7 @@ export const appRoutes: Routes = [
     path: 'events/:id',
     component: EventDetailsComponent,
     canActivate: [RouteActivatorService],
+    resolve: { event: EventDetailsResolver },
   },
   { path: 'events/session/new', component: SessionComponent },
   { path: '404', component: NotFoundComponent },

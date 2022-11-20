@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<h1>Вход</h1>
 <hr />
 <div class="col-md-4">
   <form
@@ -9,10 +9,10 @@
     novalidate
   >
     <div class="form-group">
-      <label for="username">User Name:</label>
+      <label for="username">Потребителско име:</label>
       <em
         *ngIf="loginForm.controls?.['username']?.invalid && (loginForm.controls?.['username']?.touched || mouseOverLogin)"
-        >Required</em
+        >Липсва потребителско име</em
       >
       <input
         ngModel
@@ -21,14 +21,14 @@
         id="username"
         type="text"
         class="form-control"
-        placeholder="User Name..."
+        placeholder="username"
       />
     </div>
     <div class="form-group">
-      <label for="password">Password:</label>
+      <label for="password">Парола:</label>
       <em
         *ngIf="loginForm.controls?.['password']?.invalid && (loginForm.controls?.['password']?.touched || mouseOverLogin) "
-        >Required</em
+        >Паролата е задължителна</em
       >
       <input
         ngModel
@@ -49,12 +49,12 @@
         [disabled]="loginForm.invalid"
         class="btn btn-primary"
       >
-        Login
+        Влез
       </button>
     </span>
 
     <button type="button" (click)="cancel()" class="btn btn-default">
-      Cancel
+      Отказ
     </button>
   </form>
 </div>

@@ -4,6 +4,7 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
@@ -25,7 +26,7 @@ export class SessionComponent implements OnInit {
 
   session!: ISession;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.name = new UntypedFormControl('', Validators.required);

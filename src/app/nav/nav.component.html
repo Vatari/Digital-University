@@ -1,7 +1,7 @@
 <div class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand">ngEvents</a>
+      <a class="navbar-brand">СОФТУЕРЕН УНИВЕРСИТЕТ</a>
     </div>
 
     <div class="collapse navbar-collapse">
@@ -11,7 +11,7 @@
             [routerLink]="['/events']"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
-            >All Events</a
+            >Всички курсове</a
           >
         </li>
         <li>
@@ -19,17 +19,19 @@
             *ngIf="token.getToken()"
             [routerLink]="['/events/new']"
             routerLinkActive="active"
-            >Create Event</a
+            >Добави курс</a
           >
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Events
+            За нас
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="">Angular Connect</a>
+              <a href="">Преподаватели</a>
+              <a href="">Сертификати</a>
+              <a href="">Контакти</a>
             </li>
           </ul>
         </li>
@@ -37,15 +39,15 @@
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>
-            <a *ngIf="!token.getToken()" [routerLink]="['user/login']">Login</a>
+            <a *ngIf="!token.getToken()" [routerLink]="['user/login']">Вход</a>
 
             <a *ngIf="token.getToken()" [routerLink]="['user/profile']"
-              >Welcome {{ auth.currentUser.username }}</a
+              >Добре дошъл: {{ auth.currentUser.username }}</a
             >
           </li>
           <li>
             <a *ngIf="!token.getToken()" [routerLink]="['user/register']"
-              >Register</a
+              >Регистрация</a
             >
           </li>
           <button
@@ -53,7 +55,7 @@
             id="logoutBtn"
             (click)="auth.logoutUser()"
           >
-            Logout
+            Изход
           </button>
         </ul>
       </div>

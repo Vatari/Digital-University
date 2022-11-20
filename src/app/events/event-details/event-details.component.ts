@@ -14,7 +14,7 @@ export class EventDetailsComponent implements OnInit {
   addMode: boolean = false;
   filterBy: string = 'all';
   sortBy: string = 'name';
-  sessions!: ISession[]
+  sessions!: ISession[];
 
   constructor(
     private eventService: EventService,

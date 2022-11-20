@@ -1,4 +1,4 @@
-<h1>New user registration</h1>
+<h1>Регистрация на нов потребител</h1>
 <hr />
 <div class="col-md-4">
   <form
@@ -9,10 +9,10 @@
     novalidate
   >
     <div class="form-group">
-      <label for="username">User Name:</label>
+      <label for="username">Потребителско име:</label>
       <em
         *ngIf="registerForm.controls?.['username']?.invalid && (registerForm.controls?.['username']?.touched || mouseOverLogin)"
-        >Username is required</em
+        >Потребителското име е задължително</em
       >
       <input
         ngModel
@@ -21,15 +21,15 @@
         id="username"
         type="text"
         class="form-control"
-        placeholder="User Name..."
+        placeholder="username"
       />
     </div>
 
     <div class="form-group">
-      <label for="firstName">First Name:</label>
+      <label for="firstName">Име</label>
       <em
         *ngIf="registerForm.controls?.['firstName']?.invalid && (registerForm.controls?.['firstName']?.touched || mouseOverLogin)"
-        >First Name is required</em
+        >Името е задължително</em
       >
       <input
         ngModel
@@ -43,10 +43,10 @@
     </div>
 
     <div class="form-group">
-      <label for="lastName">Last Name:</label>
+      <label for="lastName">Фамилия:</label>
       <em
         *ngIf="registerForm.controls?.['lastName']?.invalid && (registerForm.controls?.['lastName']?.touched || mouseOverLogin)"
-        >Last Name is required</em
+        >Фамилията е задължителна</em
       >
       <input
         ngModel
@@ -60,10 +60,10 @@
     </div>
 
     <div class="form-group">
-      <label for="password">Password:</label>
+      <label for="password">Парола:</label>
       <em
         *ngIf="registerForm.controls?.['password']?.invalid && (registerForm.controls?.['password']?.touched || mouseOverLogin) "
-        >Password is required</em
+        >Не е въведена парола</em
       >
 
       <input
@@ -85,12 +85,12 @@
         [disabled]="registerForm.invalid"
         class="btn btn-primary"
       >
-        Register
+        Регистрация
       </button>
     </span>
 
     <button type="button" (click)="cancel()" class="btn btn-default">
-      Cancel
+      Отказ
     </button>
   </form>
 </div>

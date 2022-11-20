@@ -9,7 +9,7 @@ import { LikeService } from '../like.service';
   templateUrl: './session-list.component.html',
   styleUrls: ['./session-list.component.css'],
 })
-export class SessionListComponent implements OnInit {
+export class SessionListComponent implements OnChanges {
   @Input() sessions!: ISession[];
   @Input() filterBy!: string;
   @Input() sortBy!: string;
@@ -21,9 +21,7 @@ export class SessionListComponent implements OnInit {
     public token: TokenService
   ) {}
 
-  ngOnInit() {
-    console.log(this.sessions);
-
+  ngOnChanges() {
     if (this.sessions) {
       this.filterSessions(this.filterBy);
       this.sortBy === 'name'

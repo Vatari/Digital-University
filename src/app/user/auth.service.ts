@@ -33,7 +33,7 @@ export class AuthService {
       .post<any>(HOST + '/users/login', loginData, options)
       .subscribe({
         next: (data) => {
-          this.toastr.success('Login successfull');
+          this.toastr.success('Успешно влизане');
           this.currentUser = <IUser>data;
           this.tokenService.saveToken(data.accessToken);
         },
@@ -66,7 +66,7 @@ export class AuthService {
       .post<any>(HOST + '/users/register', registerData, options)
       .subscribe({
         next: (data) => {
-          this.toastr.success('Registration successfull');
+          this.toastr.success('Регистрацията е успешна');
           this.tokenService.saveToken(data.accessToken);
 
           this.currentUser = <IUser>data;

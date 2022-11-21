@@ -9,7 +9,6 @@ import {
   EventDetailsComponent,
   EventsListComponent,
   EventListResolverService,
-  SessionListComponent,
 } from './events/index';
 import { SessionComponent } from './events/session';
 
@@ -26,18 +25,21 @@ export const appRoutes: Routes = [
   },
 
   {
-    path: 'events/:id', 
+    path: 'events/:id',
     component: EventDetailsComponent,
     canActivate: [RouteActivatorService],
     resolve: { event: EventDetailsResolver, sessions: SessionListResolver },
   },
 
-  
   { path: 'events/session/new', component: SessionComponent },
+
   { path: '404', component: NotFoundComponent },
+
   { path: '', redirectTo: '/events', pathMatch: 'full' },
+
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then((x) => x.UserModule),
   },
+  { path: '**', redirectTo: '/404' },
 ];

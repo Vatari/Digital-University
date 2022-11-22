@@ -9,11 +9,13 @@ export class EventDetailsResolver implements Resolve<any> {
   constructor(private eventService: EventService, private route: Router) {}
 
   resolve(route: ActivatedRouteSnapshot) {
-    return this.eventService.getEvent(route.params['id']).subscribe({
+    return this.eventService.getEvent(route.params['id'])/* .subscribe({
+      next:(event)=>{console.log(event);
+      },
       error: (err) => {
         this.eventService.errorHandler(err);
         this.route.navigate(['events']);
       },
-    });
+    }); */
   }
 }

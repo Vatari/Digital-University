@@ -28,17 +28,17 @@ import { authInterceptorProviders } from './auth-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
     NavComponent,
+    NotFoundComponent,
     EventsListComponent,
     EventThumbnailComponent,
     EventDetailsComponent,
     CreateEventComponent,
+    LikeComponent,
     SessionComponent,
     SessionListComponent,
     CollapseWellComponent,
     DurationPipe,
-    LikeComponent,
     LocationValidator,
   ],
   imports: [

@@ -3,7 +3,6 @@ const api = require("../services/event");
 const { isAuth, isOwner } = require("../middlewares/guards");
 const { mapErrors } = require("../util/mappers");
 const preload = require("../middlewares/preItem");
-const { getById } = require("../services/event");
 
 router.get("/", async (req, res) => {
   /*   const data = await api.getAll();
@@ -17,7 +16,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id/sessions", async (req, res) => {
-  const itemId = req.params.id
+  const itemId = req.params.id;
   /*   const data = await api.getAll();
   res.json(data); */
 
@@ -108,6 +107,21 @@ router.delete("/:id", preload(), isOwner(), async (req, res) => {
 
   try {
     await api.deleteById(itemId);
+    res.status(204).end();
+  } catch (err) {
+    const error = mapErrors(err)
+      .map((e) => e.msg)
+      .join("\n");
+    res.status(400).json({ message: error });
+  }
+});
+
+router.get("/session/like/:id", isAuth(), async (req, res) => {
+  const itemId = req.params.id;
+  const userId = req.user._id;
+
+  try {
+    await api.like(itemId, userId);
     res.status(204).end();
   } catch (err) {
     const error = mapErrors(err)

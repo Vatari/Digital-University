@@ -32,19 +32,17 @@ export class SessionListComponent implements OnChanges {
 
   toggleLike(session: ISession) {
     if (this.userHasLiked(session)) {
-      this.likeService.deleteUserLike(session, this.auth.currentUser.username);
+      this.likeService.userHasLiked(session, this.auth.currentUser._id);
     } else {
-      this.likeService.addUserLike(session, this.auth.currentUser.username);
+      this.likeService.addUserLike(session._id);
+      this.visibleSessions.map((s) => s.voters.push(this.auth.currentUser._id));
     }
     if (this.sortBy === 'votes') {
       this.visibleSessions.sort(sortByVotesDesc);
     }
   }
   userHasLiked(session: ISession) {
-    return this.likeService.userHasLiked(
-      session,
-      this.auth.currentUser.username
-    );
+    return this.likeService.userHasLiked(session, this.auth.currentUser._id);
   }
 
   filterSessions(filtered: string) {

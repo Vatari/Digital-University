@@ -20,11 +20,11 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.firstName = new FormControl(this.authService.currentUser.firstName, [
+    this.firstName = new FormControl(this.authService.user.firstName, [
       Validators.required,
       Validators.pattern('[a-zA-Z].*'),
     ]);
-    this.lastName = new FormControl(this.authService.currentUser.lastName, [
+    this.lastName = new FormControl(this.authService.user.lastName, [
       Validators.required,
       Validators.pattern('[a-zA-Z].*'),
     ]);

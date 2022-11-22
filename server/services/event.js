@@ -17,7 +17,7 @@ async function getAll(query) {
 }
 
 function getSessions(itemId) {
-  return Session.find({parentId: itemId}).lean();
+  return Session.find({ parentId: itemId }).lean();
 }
 
 async function getByYear(query) {
@@ -65,6 +65,17 @@ async function deleteById(id) {
   await Item.findByIdAndDelete(id);
 }
 
+async function like(itemId, userId) {
+  const session = await Session.findById(itemId);
+
+  if (session.voters.includes(userId)) {
+    throw new Error("You have already liked!");
+  }
+  session.voters.push(userId);
+
+  await session.save();
+}
+
 module.exports = {
   create,
   getAll,
@@ -74,4 +85,5 @@ module.exports = {
   getByYear,
   createSession,
   getSessions,
+  like,
 };

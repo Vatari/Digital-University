@@ -45,6 +45,6 @@ export const appRoutes: Routes = [
   },
   { path: '404', component: NotFoundComponent },
   { path: '', redirectTo: 'events', pathMatch: 'full' },
-
   { path: '**', redirectTo: '/404' },
+
 ];

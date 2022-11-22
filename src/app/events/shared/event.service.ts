@@ -1,6 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, mergeMap, Observable, of, tap } from 'rxjs';
 import { NotificationService } from 'src/app/common/toastr.service';
 import { IEvent, ISession } from './interfaces/event-model';
 
@@ -19,6 +23,10 @@ export class EventService {
   }
   getEvent(id: string): Observable<IEvent> {
     return this.http.get<IEvent>(HOST + '/events/' + id);
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return this.toastr.error('Record not Found');
   }
 
   saveEvent(event: IEvent) {

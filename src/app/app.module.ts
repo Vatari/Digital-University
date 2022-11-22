@@ -28,12 +28,12 @@ import { authInterceptorProviders } from './auth-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
+    NotFoundComponent,
+    NavComponent,
     EventsListComponent,
     EventThumbnailComponent,
-    NavComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    NotFoundComponent,
     SessionComponent,
     SessionListComponent,
     CollapseWellComponent,
@@ -42,12 +42,12 @@ import { authInterceptorProviders } from './auth-interceptor';
     LocationValidator,
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
     HttpClientModule,
   ],
   providers: [

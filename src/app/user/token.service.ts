@@ -7,10 +7,18 @@ const USER_KEY = 'auth-user';
   providedIn: 'root',
 })
 export class TokenService {
+  isLogged: Boolean = false;
+
   constructor() {}
 
   signOut(): void {
     window.sessionStorage.clear();
+  }
+
+  checkUserStatus() {
+    if (TOKEN) {
+      this.isLogged = true;
+    }
   }
 
   public saveToken(token: string): void {

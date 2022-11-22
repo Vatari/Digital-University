@@ -11,11 +11,13 @@ import {
   EventListResolverService,
 } from './events/index';
 import { SessionComponent } from './events/session';
+import { AuthGuard } from './events/shared/auth.guard';
 
 export const appRoutes: Routes = [
   {
     path: 'events/new',
     component: CreateEventComponent,
+    canActivate: [AuthGuard],
     canDeactivate: ['canDeactivateCreateEvent'],
   },
   {
@@ -31,15 +33,18 @@ export const appRoutes: Routes = [
     resolve: { event: EventDetailsResolver, sessions: SessionListResolver },
   },
 
-  { path: 'events/session/new', component: SessionComponent },
-
-  { path: '404', component: NotFoundComponent },
-
-  { path: '', redirectTo: '/events', pathMatch: 'full' },
+  {
+    path: 'events/session/new',
+    component: SessionComponent,
+    canActivate: [AuthGuard],
+  },
 
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then((x) => x.UserModule),
   },
+  { path: '404', component: NotFoundComponent },
+  { path: '', redirectTo: 'events', pathMatch: 'full' },
+
   { path: '**', redirectTo: '/404' },
 ];

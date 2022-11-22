@@ -1,3 +1,4 @@
+import { NotFoundComponent } from '../errors/not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile.component';
 import { RegisterComponent } from './register/register.component';

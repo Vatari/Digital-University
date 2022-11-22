@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/user/token.service';
 import { EventService } from '../shared/index';
 
 @Component({
@@ -10,7 +11,12 @@ import { EventService } from '../shared/index';
 export class CreateEventComponent implements OnInit {
   newEvent: any;
   isNotSaved: boolean = true;
-  constructor(private router: Router, private eventService: EventService) {}
+  isLogged: boolean = false;
+  constructor(
+    private router: Router,
+    private eventService: EventService,
+    private token: TokenService
+  ) {}
 
   ngOnInit(): void {}
 

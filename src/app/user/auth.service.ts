@@ -42,9 +42,9 @@ export class AuthService {
             lastName: data.lastName,
           };
           this.tokenService.saveUser(this.user);
-          
+
           this.tokenService.saveToken(data.accessToken);
-          this.currentUser = this.user
+          this.currentUser = this.user;
         },
         error: (err) => {
           this.toastr.error(err.error.message);
@@ -76,9 +76,17 @@ export class AuthService {
       .subscribe({
         next: (data) => {
           this.toastr.success('Регистрацията е успешна');
-          this.tokenService.saveToken(data.accessToken);
 
-          this.user = this.tokenService.getUser();
+          this.user = {
+            _id: data._id,
+            username: data.username,
+            firstName: data.firstName,
+            lastName: data.lastName,
+          };
+          this.tokenService.saveUser(this.user);
+
+          this.tokenService.saveToken(data.accessToken);
+          this.currentUser = this.user;
         },
         error: (err) => {
           this.toastr.error(err.error.message);

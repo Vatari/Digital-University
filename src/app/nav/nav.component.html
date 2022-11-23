@@ -1,7 +1,7 @@
 <div class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand">СОФТУЕРЕН УНИВЕРСИТЕТ</a>
+      <a class="navbar-brand">СОФТУНИ</a>
     </div>
 
     <div class="collapse navbar-collapse">
@@ -36,29 +36,29 @@
           </ul>
         </li>
       </ul>
-      <div class="navbar-header navbar-right">
+      <div class="navbar-header navbar-right" *ngIf="token.getToken()">
         <ul class="nav navbar-nav">
           <li>
-            <a *ngIf="!token.getToken()" [routerLink]="['user/login']">Вход</a>
-
-            <a *ngIf="token.getToken()" [routerLink]="['user/profile']"
-              >Здравей: {{ auth.user.username }}</a
+            <a [routerLink]="['user/profile']"
+              >Здравей: {{ auth.currentUser.username }}</a
             >
           </li>
-          <li>
-            <a *ngIf="!token.getToken()" [routerLink]="['user/register']"
-              >Регистрация</a
-            >
-          </li>
-          <button
-            *ngIf="token.getToken()"
-            id="logoutBtn"
-            (click)="auth.logoutUser()"
-          >
-            Изход
-          </button>
+          <button id="logoutBtn" (click)="auth.logoutUser()">Изход</button>
         </ul>
       </div>
+
+      <div class="navbar-header navbar-right" *ngIf="!token.getToken()">
+        <ul class="nav navbar-nav">
+          <li>
+            <a [routerLink]="['user/login']">Вход</a>
+          </li>
+
+          <li>
+            <a [routerLink]="['user/register']">Регистрация</a>
+          </li>
+        </ul>
+      </div>
+
       <form
         id="searchForm"
         (ngSubmit)="searchSessions(searchText)"
@@ -73,7 +73,7 @@
             placeholder="Search Sessions"
           />
         </div>
-        <button class="btn btn-default">Search</button>
+        <button class="btn btn-default">Търси</button>
       </form>
     </div>
   </div>

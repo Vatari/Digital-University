@@ -38,13 +38,13 @@ export const appRoutes: Routes = [
     component: SessionComponent,
     canActivate: [AuthGuard],
   },
+  { path: '404', component: NotFoundComponent },
 
+  { path: '', redirectTo: 'events', pathMatch: 'full' },
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then((x) => x.UserModule),
   },
-  { path: '404', component: NotFoundComponent },
-  { path: '', redirectTo: 'events', pathMatch: 'full' },
   { path: '**', redirectTo: '/404' },
 
 ];

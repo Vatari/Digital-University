@@ -11,7 +11,7 @@ const HOST = 'http://localhost:4000';
   providedIn: 'root',
 })
 export class AuthService {
-  user!: IUser;
+  user: any;
   currentUser = this.tokenService.getUser();
 
   constructor(
@@ -35,11 +35,16 @@ export class AuthService {
       .subscribe({
         next: (data) => {
           this.toastr.success('Успешно влизане');
-          this.user = <IUser>data;
-          this.tokenService.saveUser(this.user)
-          console.log(data);
+          this.user = {
+            _id: data._id,
+            username: data.username,
+            firstName: data.firstName,
+            lastName: data.lastName,
+          };
+          this.tokenService.saveUser(this.user);
           
           this.tokenService.saveToken(data.accessToken);
+          this.currentUser = this.user
         },
         error: (err) => {
           this.toastr.error(err.error.message);
@@ -73,7 +78,7 @@ export class AuthService {
           this.toastr.success('Регистрацията е успешна');
           this.tokenService.saveToken(data.accessToken);
 
-          this.user = <IUser>data;
+          this.user = this.tokenService.getUser();
         },
         error: (err) => {
           this.toastr.error(err.error.message);
@@ -83,8 +88,8 @@ export class AuthService {
 
   logoutUser() {
     this.tokenService.signOut();
-    this.router.navigate(['events']);
     this.http.get(HOST + '/users/logout');
+    this.router.navigate(['events']);
   }
 
   updateCurrentUser(firstName: string, lastName: string) {

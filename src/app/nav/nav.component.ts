@@ -19,7 +19,9 @@ export class NavComponent implements OnInit {
     public auth: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    
+  }
 
   searchSessions(searchText: string) {
     /*   this.eventService.searchSessions(searchText).subscribe((sessions: any) => {

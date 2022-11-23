@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IEvent, ISession } from '../shared/index';
 import { EventService } from '../shared/event.service';
 import { TokenService } from 'src/app/user/token.service';
@@ -19,15 +19,19 @@ export class EventDetailsComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute,
-    public token: TokenService
+    public token: TokenService,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    
     this.event = this.route.snapshot.data['event'];
     this.id = this.route.snapshot.params['id'];
     this.sessions = this.route.snapshot.data['sessions'];
     this.addMode = false;
   }
+
+
 
   addSession() {
     this.addMode = true;
@@ -36,8 +40,7 @@ export class EventDetailsComponent implements OnInit {
   saveNewSession(session: ISession) {
     session._id = this.id;
 
-    this.eventService.createSession(session);
-
+    this.eventService.createSession(session)
     this.addMode = false;
   }
   cancelCreateSession() {

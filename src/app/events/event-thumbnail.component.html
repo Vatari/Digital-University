@@ -1,16 +1,17 @@
 <div [routerLink]="['/events', event._id]" class="well hoverwell thumbnail">
   <h2>{{ event.name | uppercase }}</h2>
-  <div>Date: {{ event.date | date: "d/M/y" }}</div>
+  <div>Дата: {{ event.date }}</div>
+  <!-- | date: "d/M/y" -->
   <div [ngStyle]="getStartTimeClass()" [ngSwitch]="event.time">
-    Time: {{ event.time }}
-    <span *ngSwitchCase="'8:00 am'">(Early start)</span>
-    <span *ngSwitchCase="'10:00 am'">(Late start)</span>
-    <span *ngSwitchDefault="">(Normal start)</span>
+    Час: {{ event.time }}
+    <span *ngSwitchCase="'8:00 am'">(Ранен старт)</span>
+    <span *ngSwitchCase="'10:00 am'">(Късен старт)</span>
+    <span *ngSwitchDefault="">(Нормален старт)</span>
   </div>
 
-  <div>Price: {{ event.price | currency: "USD" }}</div>
+  <div>Цена: {{ event.price | currency: "USD" }}</div>
   <div>
-    <span>Location: {{ event.location.address }}</span>
+    <span>Начин и място на провеждане: {{ event.location.address }}</span>
     <span class="pad-left"
       >{{ event.location.city }}, {{ event.location.country }}</span
     >

@@ -9,9 +9,9 @@
 
   <div class="row">
     <div class="col-md-6">
-      <div><strong>Date:</strong> {{ event.date | date: "d/M/y" }}</div>
-      <div><strong>Time:</strong> {{ event.time }}</div>
-      <div><strong>Price:</strong> {{ event.price | currency: "USD" }}</div>
+      <div><strong>Дата: </strong> {{ event.date | date: "d/M/y" }}</div>
+      <div><strong>Час: </strong> {{ event.time }}</div>
+      <div><strong>Цена: </strong> {{ event.price | currency: "BGN" }}</div>
     </div>
     <div class="col-md-6">
       <address>
@@ -25,10 +25,10 @@
   <hr />
 
   <div class="row" style="margin-bottom: 10px">
-    <div class="col-md-2">
-      <h3 style="margin: 0">Sessions</h3>
+    <div class="col-md-3">
+      <h3 style="margin: 0">Модули към курса</h3>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-9">
       <div
         class="btn-group btn-group-sm"
         style="margin-right: 20px; margin-left: 20px"
@@ -38,7 +38,7 @@
           [class.active]="sortBy === 'name'"
           (click)="sortBy = 'name'"
         >
-          Sort by name
+          Сортирай по име
         </button>
 
         <button
@@ -46,7 +46,7 @@
           [class.active]="sortBy === 'votes'"
           (click)="sortBy = 'votes'"
         >
-          Sort by votes
+          Сортирай по харесвания
         </button>
       </div>
 
@@ -56,33 +56,33 @@
           [class.active]="filterBy === 'all'"
           (click)="filterBy = 'all'"
         >
-          All
+          Покажи всички
         </button>
         <button
           class="btn btn-default"
-          [class.active]="filterBy === 'beginner'"
-          (click)="filterBy = 'beginner'"
+          [class.active]="filterBy === 'basic'"
+          (click)="filterBy = 'basic'"
         >
-          Beginner
+          За начинаещи
         </button>
         <button
           class="btn btn-default"
-          [class.active]="filterBy === 'intermediate'"
-          (click)="filterBy = 'intermediate'"
+          [class.active]="filterBy === 'fundamentals'"
+          (click)="filterBy = 'fundamentals'"
         >
-          Intermediate
+          Основни
         </button>
         <button
           class="btn btn-default"
           [class.active]="filterBy === 'advanced'"
           (click)="filterBy = 'advanced'"
         >
-          Advanced
+          За напреднали
         </button>
       </div>
     </div>
-    <div *ngIf="token.getToken()" class="col-md-2">
-      <a (click)="addSession()">Create session</a>
+    <div *ngIf="token.getToken()" class="col-md-3" style="margin-top: 10px; font-size: 20px">
+      <a (click)="addSession()">Създай модул към курса</a>
     </div>
   </div>
 

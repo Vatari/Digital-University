@@ -15,13 +15,13 @@
           newEventForm?.controls?.['name']?.touched
       }"
     >
-      <label for="eventName">Event Name:</label>
+      <label for="eventName">Име на курса: </label>
       <em
         *ngIf="
           newEventForm.controls?.['name']?.invalid &&
           newEventForm.controls?.['name']?.touched
         "
-        >Required</em
+        >Задължително поле</em
       >
       <input
         (ngModel)="(newEvent.name)"
@@ -30,7 +30,7 @@
         id="name"
         type="text"
         class="form-control"
-        placeholder="Name of your event..."
+        placeholder="Име на курса..."
       />
     </div>
     <div
@@ -41,13 +41,13 @@
           newEventForm?.controls?.['date']?.touched
       }"
     >
-      <label for="eventDate">Event Date:</label>
+      <label for="eventDate">Дата: </label>
       <em
         *ngIf="
           newEventForm.controls?.['date']?.invalid &&
           newEventForm.controls?.['date']?.touched
         "
-        >Required</em
+        >Задължително поле</em
       >
       <input
         (ngModel)="(newEvent.date)"
@@ -67,13 +67,13 @@
           newEventForm?.controls?.['time']?.touched
       }"
     >
-      <label for="eventTime">Event Time:</label>
+      <label for="eventTime">Час: </label>
       <em
         *ngIf="
           newEventForm.controls?.['time']?.invalid &&
           newEventForm.controls?.['time']?.touched
         "
-        >Required</em
+        >Задължително поле</em
       >
       <input
         (ngModel)="(newEvent.time)"
@@ -82,7 +82,7 @@
         id="eventTime"
         type="text"
         class="form-control"
-        placeholder="start and end time..."
+        placeholder="Час..."
       />
     </div>
     <div
@@ -93,13 +93,13 @@
           newEventForm?.controls?.['price']?.touched
       }"
     >
-      <label for="eventPrice">Event Price:</label>
+      <label for="eventPrice">Цена на курса: </label>
       <em
         *ngIf="
           newEventForm.controls?.['price']?.invalid &&
           newEventForm.controls?.['price']?.touched
         "
-        >Required</em
+        >Задължително поле</em
       >
       <input
         (ngModel)="(newEvent.price)"
@@ -109,14 +109,14 @@
         type="text"
         type="number"
         class="form-control"
-        placeholder="event price..."
+        placeholder="Цена на курса..."
       />
     </div>
     <div ngModelGroup="location" #locationGroup="ngModelGroup" validateLocation>
       <div class="form-group">
-        <label for="address">Event Location:</label>
+        <label for="address">Място на провеждане: </label>
         <em *ngIf="locationGroup?.invalid && locationGroup?.touched"
-          >Full location or onlineUrl is missing</em
+          >Задължително поле</em
         >
         <input
           (ngModel)="(newEvent.address)"
@@ -124,7 +124,7 @@
           id="address"
           type="text"
           class="form-control"
-          placeholder="Address of event..."
+          placeholder="Място на провеждане..."
         />
       </div>
       <div class="row">
@@ -133,7 +133,7 @@
             (ngModel)="(newEvent.city)"
             name="city"
             id="city"
-            placeholder="City..."
+            placeholder="присъствено или онлайн..."
           />
         </div>
         <div class="col-md-6">
@@ -143,14 +143,14 @@
             id="country"
             type="text"
             class="form-control"
-            placeholder="Country..."
+            placeholder="Държава..."
           />
         </div>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="onlineUrl">Online Url:</label>
+      <label for="onlineUrl">Уеб страница: </label>
       <input
         (ngModel)="(newEvent.onlineUrl)"
         name="onlineUrl"
@@ -158,7 +158,7 @@
         type="text"
         class="form-control"
         (change)="(locationGroup?.control?.controls?.['address']?.updateValueAndValidity())"
-        placeholder="Online Url..."
+        placeholder="Уеб страница..."
       />
     </div>
     <div
@@ -176,7 +176,7 @@
           newEventForm.controls?.['imageUrl']?.touched &&
           newEventForm.controls?.['imageUrl']?.errors?.['required']
         "
-        >Required</em
+        >Задължително поле</em
       >
       <em
         *ngIf="
@@ -184,7 +184,7 @@
           newEventForm.controls?.['imageUrl']?.touched &&
           newEventForm.controls?.['imageUrl']?.errors?.['pattern']
         "
-        >Must be a png or jpg url</em
+        >Трябва да е онлайн картинка</em
       >
       <input
         (ngModel)="(newEvent.imageUrl)"
@@ -207,10 +207,10 @@
       [disabled]="newEventForm.invalid"
       class="btn btn-primary"
     >
-      Save
+      Запис
     </button>
     <button type="button" class="btn btn-default" (click)="cancel()">
-      Cancel
+      Отказ
     </button>
   </form>
 </div>

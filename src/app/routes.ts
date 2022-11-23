@@ -20,6 +20,7 @@ export const appRoutes: Routes = [
     canActivate: [AuthGuard],
     canDeactivate: ['canDeactivateCreateEvent'],
   },
+  { path: '404', component: NotFoundComponent },
   {
     path: 'events',
     component: EventsListComponent,
@@ -38,7 +39,6 @@ export const appRoutes: Routes = [
     component: SessionComponent,
     canActivate: [AuthGuard],
   },
-  { path: '404', component: NotFoundComponent },
 
   { path: '', redirectTo: 'events', pathMatch: 'full' },
   {
@@ -46,5 +46,4 @@ export const appRoutes: Routes = [
     loadChildren: () => import('./user/user.module').then((x) => x.UserModule),
   },
   { path: '**', redirectTo: '/404' },
-
 ];

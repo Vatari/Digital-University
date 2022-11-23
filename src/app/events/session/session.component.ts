@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   UntypedFormControl,
   UntypedFormGroup,
@@ -15,7 +15,7 @@ import { ISession, restrictedWords } from '../shared/index';
 export class SessionComponent implements OnInit {
   @Output() saveNewSession = new EventEmitter();
   @Output() cancelCreateSession = new EventEmitter();
-  declare words: ['foo', 'bar'];
+  declare words: ['test', 'test2'];
 
   newSessionForm!: UntypedFormGroup;
   name!: any;
@@ -52,7 +52,7 @@ export class SessionComponent implements OnInit {
     this.session = {
       _id: undefined!,
       name: formValues.name,
-      duration: +formValues.duration,
+      duration: formValues.duration,
       level: formValues.level,
       presenter: formValues.presenter,
       abstract: formValues.abstract,

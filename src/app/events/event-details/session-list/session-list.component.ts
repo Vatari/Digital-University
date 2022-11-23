@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { NotificationService } from 'src/app/common/toastr.service';
 import { AuthService } from 'src/app/user/auth.service';
 import { TokenService } from 'src/app/user/token.service';
 import { ISession } from '../../shared';
@@ -9,16 +10,18 @@ import { LikeService } from '../like.service';
   templateUrl: './session-list.component.html',
   styleUrls: ['./session-list.component.css'],
 })
-export class SessionListComponent implements OnChanges {
+export class SessionListComponent implements OnChanges, OnInit {
   @Input() sessions!: ISession[];
   @Input() filterBy!: string;
   @Input() sortBy!: string;
   visibleSessions: ISession[] = [];
+  isLiked!: boolean;
 
   constructor(
     public auth: AuthService,
     private likeService: LikeService,
-    public token: TokenService
+    public token: TokenService,
+    private toastr: NotificationService
   ) {}
 
   ngOnChanges() {
@@ -29,20 +32,25 @@ export class SessionListComponent implements OnChanges {
         : this.visibleSessions.sort(sortByVotesDesc);
     }
   }
+  ngOnInit() {}
 
   toggleLike(session: ISession) {
-    if (this.userHasLiked(session)) {
-      this.likeService.userHasLiked(session, this.auth.currentUser._id);
-    } else {
+    if (!session.voters.includes(this.auth.currentUser._id)) {
+      session.voters.push(this.auth.currentUser._id);
       this.likeService.addUserLike(session._id);
-      this.visibleSessions.map((s) => s.voters.push(this.auth.currentUser._id));
+    } else {
+      this.toastr.warning('Вече сте харесали този модул');
     }
+
+    //this.sessions.map((s) => s.voters.push(this.auth.currentUser._id));
+
     if (this.sortBy === 'votes') {
       this.visibleSessions.sort(sortByVotesDesc);
     }
   }
   userHasLiked(session: ISession) {
-    return this.likeService.userHasLiked(session, this.auth.currentUser._id);
+    return session.voters.includes(this.auth.currentUser._id);
+
   }
 
   filterSessions(filtered: string) {

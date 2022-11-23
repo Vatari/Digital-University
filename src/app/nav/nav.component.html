@@ -42,7 +42,7 @@
             <a *ngIf="!token.getToken()" [routerLink]="['user/login']">Вход</a>
 
             <a *ngIf="token.getToken()" [routerLink]="['user/profile']"
-              >Добре дошъл: {{ auth.currentUser.username }}</a
+              >Здравей: {{ auth.user.username }}</a
             >
           </li>
           <li>

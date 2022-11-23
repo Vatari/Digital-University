@@ -19,7 +19,4 @@ export class LikeService {
       },
     });
   }
-  userHasLiked(session: ISession, user: string) {
-    return session.voters.some((v) => v === user);
-  }
 }

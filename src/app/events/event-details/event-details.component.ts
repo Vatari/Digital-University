@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IEvent, ISession } from '../shared/index';
 import { EventService } from '../shared/event.service';
 import { TokenService } from 'src/app/user/token.service';
+import { AuthService } from 'src/app/user/auth.service';
 
 @Component({
   templateUrl: './event-details.component.html',
@@ -20,7 +21,9 @@ export class EventDetailsComponent implements OnInit {
     private eventService: EventService,
     private route: ActivatedRoute,
     public token: TokenService,
-    private router: Router
+    private router: Router,
+    public auth: AuthService,
+
   ) {}
 
   ngOnInit() {
@@ -36,6 +39,7 @@ export class EventDetailsComponent implements OnInit {
 
   saveNewSession(session: ISession) {
     session._id = this.id;
+    session.owner = this.auth.currentUser._id
     this.eventService.createSession(session);
     this.sessions.push(session);
 

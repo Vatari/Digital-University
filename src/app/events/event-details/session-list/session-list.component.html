@@ -32,9 +32,8 @@
         ><br />
         <span>Ниво: {{ session.level }}</span>
         <p>{{ session.abstract }}</p>
-        <div>
+        <div *ngIf="session.owner === auth.currentUser._id && token.getToken()">
           <button
-            *ngIf="isOwner"
             id="deleteBtn"
             class="btn btn-primary"
             (click)="deleteSession(session)"
@@ -43,7 +42,6 @@
           </button>
         </div>
       </div>
-   
     </app-collapse-well>
   </div>
 </div>

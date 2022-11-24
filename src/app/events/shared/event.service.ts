@@ -48,8 +48,6 @@ export class EventService {
     return this.http.delete(HOST + '/events/session/' + sessionId).subscribe({
       next: (data) => {
         this.toastr.success('Модула е изтрит успешно');
-
-        //this.tokenService.saveToken(data.accessToken);
       },
       error: (err) => {
         this.toastr.error(err.error.message);

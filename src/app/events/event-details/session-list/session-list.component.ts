@@ -44,6 +44,8 @@ export class SessionListComponent implements OnChanges, OnInit {
   }
   deleteSession(session: ISession) {
     this.eventService.sessionDelete(session._id);
+    let index = this.visibleSessions.indexOf(session);
+    this.visibleSessions.splice(index, 1);
   }
 
   toggleLike(session: ISession) {

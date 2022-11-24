@@ -1,27 +1,25 @@
-# MyAngularProject
+# My Angular Project for Softuni exam
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
+Simple website for creating learning courses and modules.  
+It uses own REST server and MongoDB Atlas as database for the backend.
 
-## Development server
+Supported functionality: login, register, logout, create, delete, like
+Authorization for users uses JWT token. Passwords for users are stored hashed in database using Bcrypt.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+package.json for client installs Angular client
 
-## Code scaffolding
+package.json for server install express and some other libraries nedeed
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+live demo: http://85.130.7.156:2210
 
-## Build
+Local installation:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Download zipped folder
+2. open server folder and run npm i
+3. run: npm start / in the same folder (this will start REST service)
+4. go back to root directory folder in terminal.
+5. run: npm i (this will install Angular client)
+6. run: ng s (this will start Angular client)
+7. open browser at http://localhost:4200 or http://127.0.0.1:4200
+8. REST server is running on port 4000 (be sure the port is not used by some other application)
+9. enjoy

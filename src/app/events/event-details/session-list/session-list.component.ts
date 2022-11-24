@@ -43,9 +43,15 @@ export class SessionListComponent implements OnChanges, OnInit {
     }
   }
   deleteSession(session: ISession) {
-    this.eventService.sessionDelete(session._id);
-    let index = this.visibleSessions.indexOf(session);
-    this.visibleSessions.splice(index, 1);
+    if (confirm('Сигурен ли сте?')) {
+      this.eventService.sessionDelete(session._id);
+
+      let index = this.visibleSessions.indexOf(session);
+      this.visibleSessions.splice(index, 1);
+      window.location.reload;
+    } else {
+      return;
+    }
   }
 
   toggleLike(session: ISession) {

@@ -8,6 +8,7 @@
       ></app-like>
     </div>
   </div>
+
   <div class="col-md-10">
     <app-collapse-well>
       <div well-title>
@@ -24,16 +25,25 @@
           {{ session.voters.length }}</span
         >
       </div>
+
       <div well-body>
         <h6>{{ session.presenter }}</h6>
         <span>Продължителност: {{ session.duration | duration }}</span
         ><br />
         <span>Ниво: {{ session.level }}</span>
         <p>{{ session.abstract }}</p>
-        <button *ngIf="isOwner" id="deleteBtn" (click)="deleteSession(session)">
-          Изтриване на модула
-        </button>
+        <div>
+          <button
+            *ngIf="isOwner"
+            id="deleteBtn"
+            class="btn btn-primary"
+            (click)="deleteSession(session)"
+          >
+            Изтриване на модула
+          </button>
+        </div>
       </div>
+   
     </app-collapse-well>
   </div>
 </div>

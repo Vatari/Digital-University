@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/user/auth.service';
   styleUrls: ['./event-details.component.css'],
 })
 export class EventDetailsComponent implements OnInit {
-  id!: any;
+  id!: string;
   event!: IEvent;
   addMode: boolean = false;
   filterBy: string = 'all';
@@ -40,8 +40,8 @@ export class EventDetailsComponent implements OnInit {
   saveNewSession(session: ISession) {
     session._id = this.id;
     session.owner = this.auth.currentUser._id
-    this.eventService.createSession(session);
     this.sessions.push(session);
+    this.eventService.createSession(session);
 
     this.addMode = false;
   }

@@ -1,5 +1,5 @@
 <div>
-  <h1>Edit Your Profile</h1>
+  <h1>Редакция на профила</h1>
   <hr />
   <div class="col-md-4">
     <form
@@ -14,14 +14,14 @@
           error: !validateFirstName()
         }"
       >
-        <label for="firstName">First Name:</label>
+        <label for="firstName">Име: </label>
         <em
           *ngIf="!validateFirstName() && profileForm.controls?.['firstName']?.errors?.['required']"
-          >Required</em
+          >Задължително поле</em
         >
         <em
           *ngIf="!validateFirstName()&& profileForm.controls?.['firstName']?.errors?.['pattern'] "
-          >First name must start with a letter!</em
+          >Има невалидни символи!</em
         >
 
         <input
@@ -33,14 +33,14 @@
         />
       </div>
       <div class="form-group" [ngClass]="{ error: !validateLastName() }">
-        <label for="lastName">Last Name:</label>
+        <label for="lastName">Фамилия: </label>
         <em
           *ngIf="!validateLastName() && profileForm.controls?.['lastName']?.errors?.['required']"
-          >Required</em
+          >Задължително поле</em
         >
         <em
           *ngIf="!validateLastName()&& profileForm.controls?.['lastName']?.errors?.['pattern'] "
-          >Last name must start with a letter!</em
+          >Има невалидни символи!</em
         >
         <input
           formControlName="lastName"
@@ -51,9 +51,9 @@
         />
       </div>
 
-      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="submit" class="btn btn-primary">Запис</button>
       <button type="button" class="btn btn-default" (click)="cancel()">
-        Cancel
+        Отказ
       </button>
     </form>
   </div>

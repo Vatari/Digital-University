@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { checkState } from 'src/app/app.module';
 import { NotificationService } from 'src/app/common/toastr.service';
 import { AuthService } from 'src/app/user/auth.service';
 import { TokenService } from 'src/app/user/token.service';
@@ -40,11 +41,9 @@ export class SessionListComponent implements OnChanges, OnInit {
 
   deleteSession(session: ISession) {
     if (confirm('Сигурен ли сте?')) {
-      this.eventService.sessionDelete(session._id);
-
       let index = this.visibleSessions.indexOf(session);
       this.visibleSessions.splice(index, 1);
-      this.sessions.splice(index, 1);
+      this.eventService.sessionDelete(session._id);
     } else {
       return;
     }

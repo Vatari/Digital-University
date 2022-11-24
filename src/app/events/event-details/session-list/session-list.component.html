@@ -30,7 +30,9 @@
         ><br />
         <span>Ниво: {{ session.level }}</span>
         <p>{{ session.abstract }}</p>
-        <button *ngIf="isOwner" id="deleteBtn">Изтриване на модула</button>
+        <button *ngIf="isOwner" id="deleteBtn" (click)="deleteSession(session)">
+          Изтриване на модула
+        </button>
       </div>
     </app-collapse-well>
   </div>

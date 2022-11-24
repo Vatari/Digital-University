@@ -31,6 +31,9 @@ async function getByYear(query) {
 function getById(id) {
   return Item.findById(id);
 }
+function getSessionById(id) {
+  return Session.findById(id);
+}
 
 async function create(item) {
   const result = new Item(item);
@@ -62,7 +65,7 @@ async function update(id, item) {
 }
 
 async function deleteById(id) {
-  await Item.findByIdAndDelete(id);
+  await Session.findByIdAndDelete(id);
 }
 
 async function like(itemId, userId) {
@@ -86,4 +89,5 @@ module.exports = {
   createSession,
   getSessions,
   like,
+  getSessionById,
 };

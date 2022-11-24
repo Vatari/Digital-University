@@ -81,7 +81,11 @@
         </button>
       </div>
     </div>
-    <div *ngIf="token.getToken()" class="col-md-3" style="margin-top: 10px; font-size: 20px">
+    <div
+      *ngIf="token.getToken()"
+      class="col-md-3"
+      style="margin-top: 10px; font-size: 20px"
+    >
       <a (click)="addSession()">Създай модул към курса</a>
     </div>
   </div>
@@ -95,7 +99,6 @@
 
   <app-session
     *ngIf="addMode"
-
     (saveNewSession)="saveNewSession($event)"
     (cancelCreateSession)="cancelCreateSession()"
   ></app-session>

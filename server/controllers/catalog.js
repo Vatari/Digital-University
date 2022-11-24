@@ -3,6 +3,7 @@ const api = require("../services/event");
 const { isAuth, isOwner } = require("../middlewares/guards");
 const { mapErrors } = require("../util/mappers");
 const preload = require("../middlewares/preItem");
+const preloadSession = require("../middlewares/preloadSession");
 
 router.get("/", async (req, res) => {
   /*   const data = await api.getAll();
@@ -79,7 +80,7 @@ router.get("/:id", preload(), (req, res) => {
   const item = res.locals.item;
   res.json(item);
 });
-router.put("/:id", preload(), isOwner(), async (req, res) => {
+router.put("/:id/sessions", preload(), isOwner(), async (req, res) => {
   const itemId = req.params.id;
 
   const item = {
@@ -102,7 +103,7 @@ router.put("/:id", preload(), isOwner(), async (req, res) => {
     res.status(400).json({ message: error });
   }
 });
-router.delete("/:id", preload(), isOwner(), async (req, res) => {
+router.delete("/session/:id", preloadSession(), isOwner(), async (req, res) => {
   const itemId = req.params.id;
 
   try {

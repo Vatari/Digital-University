@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/common/toastr.service';
 import { AuthService } from 'src/app/user/auth.service';
 import { TokenService } from 'src/app/user/token.service';
-import { ISession } from '../../shared';
+import { EventService, ISession } from '../../shared';
 import { LikeService } from '../like.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class SessionListComponent implements OnChanges, OnInit {
   @Input() sessions!: ISession[];
   @Input() filterBy!: string;
   @Input() sortBy!: string;
+
   visibleSessions: ISession[] = [];
   isLiked!: boolean;
   isOwner!: boolean;
@@ -22,7 +23,8 @@ export class SessionListComponent implements OnChanges, OnInit {
     public auth: AuthService,
     private likeService: LikeService,
     public token: TokenService,
-    private toastr: NotificationService
+    private toastr: NotificationService,
+    private eventService: EventService
   ) {}
 
   ngOnChanges() {
@@ -39,6 +41,9 @@ export class SessionListComponent implements OnChanges, OnInit {
     ) {
       this.isOwner = true;
     }
+  }
+  deleteSession(session: ISession) {
+    this.eventService.sessionDelete(session._id);
   }
 
   toggleLike(session: ISession) {

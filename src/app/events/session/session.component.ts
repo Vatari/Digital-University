@@ -57,7 +57,9 @@ export class SessionComponent implements OnInit {
       presenter: formValues.presenter,
       abstract: formValues.abstract,
       voters: [],
+      owner: undefined!,
     };
+
     this.saveNewSession.emit(this.session);
   }
 

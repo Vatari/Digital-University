@@ -24,14 +24,11 @@ export class EventDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    
     this.event = this.route.snapshot.data['event'];
     this.id = this.route.snapshot.params['id'];
     this.sessions = this.route.snapshot.data['sessions'];
     this.addMode = false;
   }
-
-
 
   addSession() {
     this.addMode = true;
@@ -39,10 +36,12 @@ export class EventDetailsComponent implements OnInit {
 
   saveNewSession(session: ISession) {
     session._id = this.id;
+    this.eventService.createSession(session);
+    this.sessions.push(session);
 
-    this.eventService.createSession(session)
     this.addMode = false;
   }
+
   cancelCreateSession() {
     this.addMode = false;
   }

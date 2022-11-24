@@ -4,6 +4,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, map, mergeMap, Observable, of, tap } from 'rxjs';
 import { NotificationService } from 'src/app/common/toastr.service';
 import { IEvent, ISession } from './interfaces/event-model';
@@ -17,7 +18,6 @@ export class EventService {
   //event!: IEvent;
 
   constructor(private http: HttpClient, private toastr: NotificationService) {}
-
 
   getEvent(id: string): Observable<IEvent> {
     return this.http.get<IEvent>(HOST + '/events/' + id);

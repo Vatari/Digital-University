@@ -16,6 +16,7 @@ export class SessionListComponent implements OnChanges, OnInit {
   @Input() sortBy!: string;
   visibleSessions: ISession[] = [];
   isLiked!: boolean;
+  isOwner!: boolean;
 
   constructor(
     public auth: AuthService,
@@ -32,7 +33,13 @@ export class SessionListComponent implements OnChanges, OnInit {
         : this.visibleSessions.sort(sortByVotesDesc);
     }
   }
-  ngOnInit() {}
+  ngOnInit() {
+    if (
+      this.sessions.some((s) => s.owner.includes(this.auth.currentUser._id))
+    ) {
+      this.isOwner = true;
+    }
+  }
 
   toggleLike(session: ISession) {
     if (!session.voters.includes(this.auth.currentUser._id)) {
@@ -50,7 +57,6 @@ export class SessionListComponent implements OnChanges, OnInit {
   }
   userHasLiked(session: ISession) {
     return session.voters.includes(this.auth.currentUser._id);
-
   }
 
   filterSessions(filtered: string) {

@@ -61,14 +61,14 @@
         <button
           class="btn btn-default"
           [class.active]="filterBy === 'basic'"
-          (click)="filterBy = 'basic'"
+          (click)="filterBy = 'beginner'"
         >
           За начинаещи
         </button>
         <button
           class="btn btn-default"
           [class.active]="filterBy === 'fundamentals'"
-          (click)="filterBy = 'fundamentals'"
+          (click)="filterBy = 'intermediate'"
         >
           Основни
         </button>
@@ -95,6 +95,7 @@
 
   <app-session
     *ngIf="addMode"
+
     (saveNewSession)="saveNewSession($event)"
     (cancelCreateSession)="cancelCreateSession()"
   ></app-session>

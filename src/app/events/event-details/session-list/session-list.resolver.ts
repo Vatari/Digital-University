@@ -9,6 +9,8 @@ import { EventService } from '../../shared';
 export class SessionListResolver implements Resolve<any> {
   constructor(private eventService: EventService) {}
   resolve(route: ActivatedRouteSnapshot) {
-    return this.eventService.loadSessions(route.params['id']).pipe(map((sessions) => sessions));
+    return this.eventService
+      .loadSessions(route.params['id'])
+      .pipe(map((sessions) => sessions));
   }
 }

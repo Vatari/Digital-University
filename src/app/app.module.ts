@@ -60,7 +60,7 @@ export class AppModule {}
 export function checkState(component: CreateEventComponent) {
   if (component.isNotSaved) {
     return window.confirm(
-      'You have not saved this event, do you really want to leave this page?'
+      'Може да изгубите направените промени. Желаете ли да напуснете тази страницa?'
     );
   }
   return true;

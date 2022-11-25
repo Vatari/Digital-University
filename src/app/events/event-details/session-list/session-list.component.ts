@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { checkState } from 'src/app/app.module';
 import { NotificationService } from 'src/app/common/toastr.service';
 import { AuthService } from 'src/app/user/auth.service';
@@ -26,7 +27,8 @@ export class SessionListComponent implements OnChanges, OnInit {
     private likeService: LikeService,
     public token: TokenService,
     private toastr: NotificationService,
-    private eventService: EventService
+    private eventService: EventService,
+    private router: Router
   ) {}
 
   ngOnChanges() {

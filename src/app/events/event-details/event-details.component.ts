@@ -22,8 +22,7 @@ export class EventDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     public token: TokenService,
     private router: Router,
-    public auth: AuthService,
-
+    public auth: AuthService
   ) {}
 
   ngOnInit() {
@@ -33,16 +32,23 @@ export class EventDetailsComponent implements OnInit {
     this.addMode = false;
   }
 
+  reloadCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+  }
+
   addSession() {
     this.addMode = true;
   }
 
   saveNewSession(session: ISession) {
     session._id = this.id;
-    session.owner = this.auth.currentUser._id
+    session.owner = this.auth.currentUser._id;
     this.sessions.push(session);
     this.eventService.createSession(session);
-
+    this.reloadCurrentRoute();
     this.addMode = false;
   }
 

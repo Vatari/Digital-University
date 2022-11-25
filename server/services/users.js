@@ -61,6 +61,16 @@ function createSession(user) {
   };
 }
 
+async function updateUser(id, userData) {
+  const existing = await User.findById(id);
+
+  existing.firstName = userData.firstName;
+  existing.lastName = userData.lastName;
+
+  await existing.save();
+  return existing;
+}
+
 function verifySession(token) {
   if (blacklist.includes(token)) {
     throw new Error("Token is invalid");
@@ -80,4 +90,5 @@ module.exports = {
   login,
   logout,
   verifySession,
+  updateUser,
 };

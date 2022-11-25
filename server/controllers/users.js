@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { isGuest } = require("../middlewares/guards");
-const { register, login, logout } = require("../services/users");
+const { isGuest, isAuth } = require("../middlewares/guards");
+const { register, login, logout, updateUser } = require("../services/users");
 const { mapErrors } = require("../util/mappers");
 
 router.post("/register", isGuest(), async (req, res) => {
@@ -34,6 +34,25 @@ router.post("/login", isGuest(), async (req, res) => {
       req.body.username.trim().toLowerCase(),
       req.body.password.trim()
     );
+    res.status(200).json(result);
+  } catch (err) {
+    const error = mapErrors(err)
+      .map((e) => e.msg)
+      .join("\n");
+    res.status(400).json({ message: error });
+  }
+});
+
+router.put("/update", isAuth(), async (req, res) => {
+  const userId = req.user._id;
+
+  const userData = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+  };
+
+  try {
+    const result = await updateUser(userId, userData);
     res.status(200).json(result);
   } catch (err) {
     const error = mapErrors(err)

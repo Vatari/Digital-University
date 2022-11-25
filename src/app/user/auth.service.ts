@@ -101,7 +101,27 @@ export class AuthService {
   }
 
   updateCurrentUser(firstName: string, lastName: string) {
-    this.user.firstName = firstName;
-    this.user.lastName = lastName;
+    let data = {
+      firstName,
+      lastName,
+    };
+
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: data,
+    };
+    return this.http.put<any>(HOST + '/users/update', data, options).subscribe({
+      next: (data) => {
+        this.currentUser.firstName = data.firstName;
+        this.currentUser.lastName = data.lastName;
+
+        this.toastr.success('Профила е обновен');
+      },
+      error: (err) => {
+        this.toastr.error(err.error.message);
+      },
+    });
   }
 }

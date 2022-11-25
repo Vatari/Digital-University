@@ -41,7 +41,6 @@ export class ProfileComponent implements OnInit {
         formValues.firstName,
         formValues.lastName
       );
-      this.toastr.success('Profile successfully updated');
       this.router.navigate(['events']);
     }
   }

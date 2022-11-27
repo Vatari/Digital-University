@@ -1,0 +1,10 @@
+<div>
+    <h1>Намерени резултати: </h1>
+    <hr />
+    <div class="row">
+      <div *ngFor="let event of searchedEvents" class="col-md-5">
+        <event-thumbnail [event]="event"> </event-thumbnail>
+      </div>
+    </div>
+  </div>
+  

@@ -68,6 +68,10 @@ export class EventService {
       });
   }
 
+  searchEvents(query: string) {
+    return this.http.get<IEvent[]>(HOST + `/events/search?search=${query}`);
+  }
+
   loadSessions(id: string): Observable<ISession[]> {
     return this.http.get<ISession[]>(HOST + `/events/${id}/sessions`);
   }

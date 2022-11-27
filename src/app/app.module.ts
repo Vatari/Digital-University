@@ -24,6 +24,7 @@ import { CollapseWellComponent } from './common/collapse-well/collapse-well.comp
 import { LikeComponent } from './events/event-details/like/like.component';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './auth-interceptor';
+import { SearchComponent } from './events/search/search.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { authInterceptorProviders } from './auth-interceptor';
     CollapseWellComponent,
     DurationPipe,
     LocationValidator,
+    SearchComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

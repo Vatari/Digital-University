@@ -10,7 +10,16 @@ router.get("/", async (req, res) => {
   res.json(data); */
 
   try {
-    res.json(await api.getAll(req.query.where));
+    res.json(await api.getAll());
+  } catch (err) {
+    res.status(400).json({ message: "Bad request" });
+  }
+});
+
+router.get("/search", async (req, res) => {
+
+  try {
+    res.json(await api.getByQuery(req.query));
   } catch (err) {
     res.status(400).json({ message: "Bad request" });
   }

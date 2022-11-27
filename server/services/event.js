@@ -1,19 +1,17 @@
+const { async } = require("rxjs");
 const Item = require("../models/Item");
 const Session = require("../models/Session");
 
-async function getAll(query) {
-  if (query) {
-    const userId = query.split("=")[1].slice(1, -1);
-    const search = query.split("=")[0];
-    const searchParams = query.split("=")[1];
-
-    if (search == "year") {
-      return Item.find({ year: searchParams });
-    } else {
-      return Item.find({ owner: userId });
-    }
-  }
+async function getAll() {
   return Item.find({});
+}
+
+async function getByQuery(query) {
+  /*  const userId = query.split("=")[1].slice(1, -1);
+  const search = query.split("=")[0];
+  const searchParams = Object.values(query) */
+
+  return Item.find({ name: { $regex: query.search, $options: "i" } });
 }
 
 function getSessions(itemId) {
@@ -90,4 +88,5 @@ module.exports = {
   getSessions,
   like,
   getSessionById,
+  getByQuery,
 };

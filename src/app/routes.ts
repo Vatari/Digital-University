@@ -10,6 +10,8 @@ import {
   EventsListComponent,
   EventListResolverService,
 } from './events/index';
+import { SearchComponent } from './events/search/search.component';
+import { SearchResolver } from './events/search/search.resolver';
 import { SessionComponent } from './events/session';
 import { AuthGuard } from './events/shared/auth.guard';
 
@@ -25,6 +27,11 @@ export const appRoutes: Routes = [
     path: 'events',
     component: EventsListComponent,
     resolve: { events: EventListResolverService },
+  },
+  {
+    path: 'events/search',
+    component: SearchComponent,
+    resolve: { searchedEvents: SearchResolver },
   },
 
   {

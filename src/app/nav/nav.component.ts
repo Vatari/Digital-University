@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventService, ISession } from '../events';
 import { AuthService } from '../user/auth.service';
 import { TokenService } from '../user/token.service';
@@ -9,24 +10,20 @@ import { TokenService } from '../user/token.service';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
-  searchText: string = '';
+  query: string = '';
 
   foundSessions!: ISession[];
 
   constructor(
     public token: TokenService,
     private eventService: EventService,
-    public auth: AuthService
+    public auth: AuthService,
+    private router: Router
   ) {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
-  searchSessions(searchText: string) {
-    /*   this.eventService.searchSessions(searchText).subscribe((sessions: any) => {
-      this.foundSessions = sessions;
-      console.log(sessions);
-    }); */
+  search(query: string) {
+    this.router.navigate(['/events/search'], { queryParams: { query } });
   }
 }

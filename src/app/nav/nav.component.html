@@ -43,7 +43,13 @@
               >Здравей: {{ auth.currentUser.username }}</a
             >
           </li>
-          <button id="logoutBtn" class="btn btn-primary" (click)="auth.logoutUser()">Изход</button>
+          <button
+            id="logoutBtn"
+            class="btn btn-primary"
+            (click)="auth.logoutUser()"
+          >
+            Изход
+          </button>
         </ul>
       </div>
 
@@ -61,16 +67,16 @@
 
       <form
         id="searchForm"
-        (ngSubmit)="searchSessions(searchText)"
+        (ngSubmit)="search(query)"
         class="navbar-form navbar-right"
       >
         <div class="form-group">
           <input
-            [(ngModel)]="searchText"
-            name="searchText"
+            [(ngModel)]="query"
+            name="search"
             type="text"
             class="form-control"
-            placeholder="Search Sessions"
+            placeholder="Търси курс....."
           />
         </div>
         <button class="btn btn-default">Търси</button>

@@ -9,15 +9,11 @@ import { IEvent } from '../shared';
 })
 export class SearchComponent implements OnInit {
   searchedEvents!: IEvent[];
+  query!: string;
 
   constructor(private router: ActivatedRoute) {}
 
   ngOnInit() {
     this.searchedEvents = this.router.snapshot.data['searchedEvents'];
-
-    this.router.data.subscribe((data) => {
-      data
-      // is now triggered at each queryParams change
-    });
   }
 }

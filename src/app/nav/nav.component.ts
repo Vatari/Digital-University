@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EventService, ISession } from '../events';
 import { AuthService } from '../user/auth.service';
 import { TokenService } from '../user/token.service';
@@ -18,12 +18,16 @@ export class NavComponent implements OnInit {
     public token: TokenService,
     private eventService: EventService,
     public auth: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {}
 
   search(query: string) {
-    this.router.navigate(['/events/search'], { queryParams: { query } });
+    if (query !== '') {
+      this.router.navigate(['/events/search'], { queryParams: { query } });
+    }
+    return;
   }
 }

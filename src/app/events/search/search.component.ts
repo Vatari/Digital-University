@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { IEvent } from '../shared';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EventService, IEvent } from '../shared';
+import { SearchResolver } from './search.resolver';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,6 @@ import { IEvent } from '../shared';
 })
 export class SearchComponent implements OnInit {
   searchedEvents!: IEvent[];
-  query!: string;
 
   constructor(private router: ActivatedRoute) {}
 

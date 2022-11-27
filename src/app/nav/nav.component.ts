@@ -25,7 +25,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {}
 
   search(query: string) {
-    if (query !== '') {
+    if (query !== '' && query) {
       this.router.navigate(['/events/search'], { queryParams: { query } });
     }
     return;

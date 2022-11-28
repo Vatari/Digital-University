@@ -66,8 +66,8 @@
       </div>
 
       <form
+        #searchForm="ngForm"
         id="searchForm"
-        (ngSubmit)="search(query)"
         class="navbar-form navbar-right"
       >
         <div class="form-group">
@@ -79,7 +79,9 @@
             placeholder="Търси курс....."
           />
         </div>
-        <button class="btn btn-default">Търси</button>
+        <button routerLink="events/search" [queryParams]="{query}" class="btn btn-default">
+          Търси
+        </button>
       </form>
     </div>
   </div>

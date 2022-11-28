@@ -1,7 +1,6 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { EventService, IEvent } from '../shared';
-import { SearchResolver } from './search.resolver';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IEvent } from '../shared';
 
 @Component({
   selector: 'app-search',
@@ -10,10 +9,12 @@ import { SearchResolver } from './search.resolver';
 })
 export class SearchComponent implements OnInit {
   searchedEvents!: IEvent[];
+  query!: string;
 
   constructor(private router: ActivatedRoute) {}
 
   ngOnInit() {
     this.searchedEvents = this.router.snapshot.data['searchedEvents'];
+    this.query = this.router.snapshot.queryParams['query'];
   }
 }

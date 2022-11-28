@@ -1,10 +1,13 @@
 <div>
-    <h1>Намерени резултати: </h1>
-    <hr />
-    <div class="row">
-      <div *ngFor="let event of searchedEvents" class="col-md-5">
-        <event-thumbnail [event]="event"> </event-thumbnail>
-      </div>
+  <h1 *ngIf="searchedEvents.length == 0">Няма резултати за: "{{ query }}"</h1>
+  <h1 *ngIf="searchedEvents.length > 0">
+    Намерени резултати за: "{{ query }}" - {{ searchedEvents.length }}
+  </h1>
+
+  <hr />
+  <div class="row">
+    <div *ngFor="let event of searchedEvents" class="col-md-5">
+      <event-thumbnail [event]="event"> </event-thumbnail>
     </div>
   </div>
-  
+</div>

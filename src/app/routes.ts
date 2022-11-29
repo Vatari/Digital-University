@@ -40,6 +40,8 @@ export const appRoutes: Routes = [
     component: EventDetailsComponent,
     canActivate: [RouteActivatorService],
     resolve: { event: EventDetailsResolver, sessions: SessionListResolver },
+    runGuardsAndResolvers: 'always',
+
   },
 
   {

@@ -48,8 +48,8 @@ export class EventDetailsComponent implements OnInit {
     session.owner = this.auth.currentUser._id;
     this.sessions.push(session);
     this.eventService.createSession(session);
-    this.reloadCurrentRoute();
     this.addMode = false;
+    this.reloadCurrentRoute();
   }
 
   cancelCreateSession() {

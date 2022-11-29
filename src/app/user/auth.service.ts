@@ -1,5 +1,4 @@
 import { Injectable, Input } from '@angular/core';
-import { IUser } from './user-model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NotificationService } from '../common/toastr.service';
 import { Router } from '@angular/router';
@@ -45,9 +44,11 @@ export class AuthService {
 
           this.tokenService.saveToken(data.accessToken);
           this.currentUser = this.user;
+          this.router.navigate(['events']);
         },
         error: (err) => {
           this.toastr.error(err.error.message);
+          this.router.navigateByUrl('user/login');
         },
       });
   }

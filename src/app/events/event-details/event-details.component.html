@@ -1,12 +1,11 @@
 <div class="container">
-  <img [src]="event.imageUrl" [alt]="event.name" class="event-image" />
-
   <div class="row">
     <div class="col-md-11">
-      <h2>{{ event.name | uppercase }}</h2>
     </div>
+    <h2>{{ event.name | uppercase }}</h2>
+    <img [src]="event.imageUrl" style="padding-left: 1000px" [alt]="event.name" class="event-image" />
   </div>
-
+  
   <div class="row">
     <div class="col-md-6">
       <div><strong>Дата: </strong> {{ event.date }}</div>
@@ -15,7 +14,7 @@
     </div>
     <div class="col-md-6">
       <address>
-        <strong>Адрес: </strong> 
+        <strong>Адрес: </strong>
         {{ event.location.address }}<br />
         {{ event.location.city }}, {{ event.location.country }}
       </address>

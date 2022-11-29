@@ -79,9 +79,17 @@
             placeholder="Търси курс....."
           />
         </div>
-        <button routerLink="events/search" [queryParams]="{query}" class="btn btn-default">
+        <button
+          *ngIf="query"
+          routerLink="events/search"
+          (click)="reset(searchForm)"
+          [queryParams]="{query}"
+          class="btn btn-default"
+        >
           Търси
         </button>
+
+        <button *ngIf="!query" class="btn btn-default">Търси</button>
       </form>
     </div>
   </div>

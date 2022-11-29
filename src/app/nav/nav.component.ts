@@ -22,13 +22,8 @@ export class NavComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
-/* 
-  search(query: string, form: NgForm) {
-    if (query !== '' && query) {
-      this.router.navigate(['events/search'], { queryParams: { query } });
 
-      form.reset();
-    }
-    return;
-  } */
+  reset(form: NgForm) {
+    form.reset();
+  }
 }

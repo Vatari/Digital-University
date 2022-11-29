@@ -31,7 +31,8 @@ export const appRoutes: Routes = [
   {
     path: 'events/search',
     component: SearchComponent,
-    resolve: { searchedEvents: SearchResolver },
+    resolve: { searchedEvents: SearchResolver, query: SearchResolver },
+    runGuardsAndResolvers: 'always',
   },
 
   {

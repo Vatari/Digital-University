@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IEvent } from '../shared';
 
@@ -9,12 +10,18 @@ import { IEvent } from '../shared';
 })
 export class SearchComponent implements OnInit {
   searchedEvents!: IEvent[];
-  query!: string;
+  @Input() query!: string;
+
+  @Input() form!: NgForm;
 
   constructor(private router: ActivatedRoute) {}
 
   ngOnInit() {
-    this.searchedEvents = this.router.snapshot.data['searchedEvents'];
-    this.query = this.router.snapshot.queryParams['query'];
+    this.router.queryParams.subscribe((data) => {
+      this.query = data['query'];
+
+      this.searchedEvents = this.router.snapshot.data['searchedEvents'];
+      this.query = this.router.snapshot.queryParams['query'];
+    });
   }
 }

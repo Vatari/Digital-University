@@ -1,0 +1,74 @@
+<div style="text-align: center">
+  <h1 class="well">Свържете се с нас</h1>
+  <div class="container">
+    <div class="col-md-5">
+      <div class="form-area">
+        <form role="form">
+          <br style="clear: both" />
+          <h3 style="margin-bottom: 25px; text-align: center">
+            Моля попълнете вашите данни
+          </h3>
+          <div class="form-group">
+            <input
+              id="name"
+              class="form-control"
+              name="name"
+              required=""
+              type="text"
+              placeholder="Име"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              id="email"
+              class="form-control"
+              name="email"
+              required=""
+              type="email"
+              placeholder="Email"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              id="mobile"
+              class="form-control"
+              name="mobile"
+              required=""
+              type="phone"
+              placeholder="тел. номер"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              id="subject"
+              class="form-control"
+              name="subject"
+              required=""
+              type="text"
+              placeholder="Тема"
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              id="message"
+              class="form-control"
+              maxlength="140"
+              name="message"
+              rows="7"
+              placeholder="Съощение"
+            ></textarea>
+          </div>
+          <button
+            (click)="send()"
+            id="submit"
+            class="btn btn-primary pull-right"
+            name="submit"
+            type="button"
+          >
+            Изпрати
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

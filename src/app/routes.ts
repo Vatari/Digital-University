@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ContactsComponent } from './common/contacts/contacts.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { EventDetailsResolver } from './events/event-details/event-details.resolver';
 import { RouteActivatorService } from './events/event-details/route-activator.service';
@@ -41,13 +42,16 @@ export const appRoutes: Routes = [
     canActivate: [RouteActivatorService],
     resolve: { event: EventDetailsResolver, sessions: SessionListResolver },
     runGuardsAndResolvers: 'always',
-
   },
 
   {
     path: 'events/session/new',
     component: SessionComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'contacts',
+    component: ContactsComponent,
   },
 
   { path: '', redirectTo: 'events', pathMatch: 'full' },

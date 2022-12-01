@@ -25,6 +25,7 @@ import { LikeComponent } from './events/event-details/like/like.component';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './auth-interceptor';
 import { SearchComponent } from './events/search/search.component';
+import { ContactsComponent } from './common/contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { SearchComponent } from './events/search/search.component';
     DurationPipe,
     LocationValidator,
     SearchComponent,
+    ContactsComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

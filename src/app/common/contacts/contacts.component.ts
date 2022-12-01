@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ContactsComponent implements OnInit {
   form!: FormGroup;
+  isSent: boolean = false;
 
   ngOnInit(): void {
     this.buildForm();
@@ -16,14 +17,20 @@ export class ContactsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   send(): void {
-    const { name, email, message } = this.form.value;
-    alert(`Name: ${name}, Email: ${email}, Message: ${message} `);
+    this.isSent = true;
+    /*   const { name, email, mobile, subject, message } = this.form.value;
+    alert(
+      `Name: ${name}, Email: ${email}, mobile: ${mobile}, Subject: ${subject},Message: ${message} `
+    ); */
+    this.form.reset();
   }
 
   private buildForm(): void {
     this.form = this.formBuilder.group({
       name: this.formBuilder.control(null),
       email: this.formBuilder.control(null),
+      mobile: this.formBuilder.control(null),
+      subject: this.formBuilder.control(null),
       message: this.formBuilder.control(null),
     });
   }

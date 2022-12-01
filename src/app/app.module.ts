@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './auth-interceptor';
 import { SearchComponent } from './events/search/search.component';
 import { ContactsComponent } from './common/contacts/contacts.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ContactsComponent } from './common/contacts/contacts.component';
     LocationValidator,
     SearchComponent,
     ContactsComponent,
+    FooterComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

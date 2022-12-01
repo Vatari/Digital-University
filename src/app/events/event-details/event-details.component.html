@@ -1,16 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-11">
-    </div>
+    <div class="col-md-11"></div>
     <h2>{{ event.name | uppercase }}</h2>
-    <img [src]="event.imageUrl" style="padding-left: 1000px" [alt]="event.name" class="event-image" />
+    <img
+      [src]="event.imageUrl"
+      style="padding-left: 1000px"
+      [alt]="event.name"
+      class="event-image"
+    />
   </div>
-  
+
   <div class="row">
     <div class="col-md-6">
       <div><strong>Дата: </strong> {{ event.date }}</div>
       <div><strong>Час: </strong> {{ event.time }}</div>
-      <div><strong>Цена: </strong> {{ event.price | currency: "BGN" }}</div>
+      <div><strong>Цена: </strong> {{ event.price | currency : "BGN" }}</div>
     </div>
     <div class="col-md-6">
       <address>

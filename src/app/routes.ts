@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { ContactsComponent } from './common/contacts/contacts.component';
+import { StaffComponent } from './common/staff/staff.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { EventDetailsResolver } from './events/event-details/event-details.resolver';
 import { RouteActivatorService } from './events/event-details/route-activator.service';
@@ -52,6 +53,10 @@ export const appRoutes: Routes = [
   {
     path: 'contacts',
     component: ContactsComponent,
+  },
+  {
+    path: 'staff',
+    component: StaffComponent,
   },
 
   { path: '', redirectTo: 'events', pathMatch: 'full' },

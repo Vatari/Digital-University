@@ -27,6 +27,7 @@ import { authInterceptorProviders } from './auth-interceptor';
 import { SearchComponent } from './events/search/search.component';
 import { ContactsComponent } from './common/contacts/contacts.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { StaffComponent } from './common/staff/staff.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { FooterComponent } from './common/footer/footer.component';
     SearchComponent,
     ContactsComponent,
     FooterComponent,
+    StaffComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

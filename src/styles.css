@@ -5,7 +5,6 @@
 
 .container {
   padding-top: 10px;
-
 }
 
 .pointable {
@@ -44,10 +43,10 @@ body {
 }
 
 body {
-  background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url("./assets/images/students.jpeg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./assets/images/students.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter:brightness(90%);
+  filter: brightness(90%);
 
 }

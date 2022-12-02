@@ -5,6 +5,7 @@
 
 .container {
   padding-top: 10px;
+
 }
 
 .pointable {
@@ -35,9 +36,18 @@ button {
   background-color: #f89406;
 }
 
-body{
+body {
   box-sizing: border-box;
-    min-height: 100vh;
-    position: relative;
-    padding-bottom: 64px;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 64px;
+}
+
+body {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url("./assets/images/students.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter:brightness(90%);
+
 }

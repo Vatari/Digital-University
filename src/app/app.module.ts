@@ -28,6 +28,7 @@ import { SearchComponent } from './events/search/search.component';
 import { ContactsComponent } from './common/contacts/contacts.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { StaffComponent } from './common/staff/staff.component';
+import { CertificatesComponent } from './common/certificates/certificates.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { StaffComponent } from './common/staff/staff.component';
     ContactsComponent,
     FooterComponent,
     StaffComponent,
+    CertificatesComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CertificatesComponent } from './common/certificates/certificates.component';
 import { ContactsComponent } from './common/contacts/contacts.component';
 import { StaffComponent } from './common/staff/staff.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
@@ -57,6 +58,10 @@ export const appRoutes: Routes = [
   {
     path: 'staff',
     component: StaffComponent,
+  },
+  {
+    path: 'certificates',
+    component: CertificatesComponent,
   },
 
   { path: '', redirectTo: 'events', pathMatch: 'full' },

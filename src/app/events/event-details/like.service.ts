@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NotificationService } from 'src/app/common/toastr.service';
-import { ISession } from '../shared';
 
 const HOST = 'http://localhost:4000';
 

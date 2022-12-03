@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   UntypedFormControl,
   UntypedFormGroup,
@@ -36,7 +36,7 @@ export class SessionComponent implements OnInit {
     this.abstract = new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(400),
-      //restrictedWords(this.words),   ----> TODO
+      //restrictedWords(this.words),   ----> TODO нещо не ми сработват забранените думи (да го оправя на по-късен етап)
     ]);
 
     this.newSessionForm = new UntypedFormGroup({

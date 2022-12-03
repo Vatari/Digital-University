@@ -1,7 +1,7 @@
 <div [routerLink]="['/events', event._id]" class="well hoverwell thumbnail">
   <h2>{{ event.name | uppercase }}</h2>
-  <div>Дата: {{ event.date}} </div>
-  <!-- | date: "d/M/y" -->
+  <div>Дата: {{ event.date }}</div>
+  <!-- | date: "d/M/y"  Този pipe не ми сработва ако се въведе датата в грешен формат, трябва да сложа validator-->
   <div [ngStyle]="getStartTimeClass()" [ngSwitch]="event.time">
     Час: {{ event.time }}
     <span *ngSwitchCase="'8:00 am'">(Ранен старт)</span>
@@ -9,7 +9,7 @@
     <span *ngSwitchDefault="">(Нормален старт)</span>
   </div>
 
-  <div>Цена: {{ event.price | currency: "BGN " }}</div>
+  <div>Цена: {{ event.price | currency : "BGN " }}</div>
   <div>
     <span>Начин и място на провеждане: {{ event.location.address }}</span>
     <span class="pad-left"

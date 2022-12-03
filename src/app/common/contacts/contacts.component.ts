@@ -21,7 +21,7 @@ export class ContactsComponent implements OnInit {
     /*   const { name, email, mobile, subject, message } = this.form.value;
     alert(
       `Name: ${name}, Email: ${email}, mobile: ${mobile}, Subject: ${subject},Message: ${message} `
-    ); */
+    ); */ //ако след това ми потрябват стойностите !
     this.form.reset();
   }
 

@@ -31,7 +31,6 @@ export class TokenService {
   }
 
   public saveUser(user: any): void {
-    //window.sessionStorage.removeItem(USER);
     window.sessionStorage.setItem(USER, JSON.stringify(user));
   }
 

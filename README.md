@@ -1,6 +1,6 @@
 # My Angular Project for Softuni exam - 18.12.2022
 
-ENG-version
+EN-version
 
 Simple website for creating paid learning courses and modules.  
 It uses own REST server and MongoDB Atlas as database for the backend.

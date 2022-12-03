@@ -58,8 +58,6 @@ export class SessionListComponent implements OnChanges, OnInit {
       this.toastr.warning('Вече сте харесали този модул');
     }
 
-    //this.sessions.map((s) => s.voters.push(this.auth.currentUser._id));
-
     if (this.sortBy === 'votes') {
       this.visibleSessions.sort(sortByVotesDesc);
     }

@@ -1,4 +1,3 @@
-const { async } = require("rxjs");
 const Item = require("../models/Item");
 const Session = require("../models/Session");
 
@@ -9,7 +8,7 @@ async function getAll() {
 async function getByQuery(query) {
   /*  const userId = query.split("=")[1].slice(1, -1);
   const search = query.split("=")[0];
-  const searchParams = Object.values(query) */
+  const searchParams = Object.values(query) */ //Щях да го ползвам за search, nо в крайна сметка трябваше да си направя отделна функция...
 
   return Item.find({ name: { $regex: query.search, $options: "i" } });
 }

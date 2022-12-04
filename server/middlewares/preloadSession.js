@@ -1,4 +1,4 @@
-const { getById, getSessionById } = require("../services/event");
+const { getSessionById } = require("../services/event");
 
 module.exports = () => async (req, res, next) => {
   const id = req.params.id;

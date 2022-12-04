@@ -6,9 +6,6 @@ const preload = require("../middlewares/preItem");
 const preloadSession = require("../middlewares/preloadSession");
 
 router.get("/", async (req, res) => {
-  /*   const data = await api.getAll();
-  res.json(data); */
-
   try {
     res.json(await api.getAll());
   } catch (err) {
@@ -17,7 +14,6 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/search", async (req, res) => {
-
   try {
     res.json(await api.getByQuery(req.query));
   } catch (err) {
@@ -27,8 +23,6 @@ router.get("/search", async (req, res) => {
 
 router.get("/:id/sessions", async (req, res) => {
   const itemId = req.params.id;
-  /*   const data = await api.getAll();
-  res.json(data); */
 
   try {
     res.json(await api.getSessions(itemId));

@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const ENV = require("dotenv");
-ENV.config({ path: "../.env" });
+ENV.config({ path: "./.env" });
 const cors = require("./middlewares/cors");
 const auth = require("./middlewares/auth");
 const catalogController = require("./controllers/catalog");

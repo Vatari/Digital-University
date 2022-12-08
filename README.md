@@ -12,7 +12,7 @@ package.json for client installs Angular client
 
 package.json for server install Express and some other libraries nedeed
 
-Live demo here: http://85.130.23.37:2210
+Live demo here: http://71af08d6e733.sn.mynetname.net:11800
 
 Local installation:
 
@@ -45,7 +45,7 @@ package.json за клиента инсталира Angular клиента
 
 package.json за сървъра инсталира Express и някой други нужни библиотеки
 
-Демо на сайта може да откриете тук: http://85.130.7.156:2210
+Демо на сайта може да откриете тук: http://71af08d6e733.sn.mynetname.net:11800
 
 Локална инсталация
 

@@ -43,7 +43,7 @@ Author: Petar Zhelev
 
 package.json за клиента инсталира Angular клиента
 
-package.json за сървъра инсталира Express и някой други нужни библиотеки
+package.json за сървъра инсталира Express и някои други нужни библиотеки
 
 Демо на сайта може да откриете тук: http://71af08d6e733.sn.mynetname.net:11800
 

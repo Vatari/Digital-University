@@ -19,7 +19,6 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
-    "bcrypt": "^5.1.0",
     "install": "^0.13.0",
     "ngf-bootstrap": "^0.0.5",
     "ngx-toastr": "^15.2.1",

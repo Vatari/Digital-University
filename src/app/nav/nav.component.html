@@ -39,7 +39,7 @@
       <div class="navbar-header navbar-right" *ngIf="token.getToken()">
         <ul class="nav navbar-nav">
           <li>
-            <a [routerLink]="['user/profile']"
+            <a [routerLink]="['/user/profile']"
               >Здравей: {{ auth.currentUser.username }}</a
             >
           </li>
@@ -56,11 +56,11 @@
       <div class="navbar-header navbar-right" *ngIf="!token.getToken()">
         <ul class="nav navbar-nav">
           <li>
-            <a [routerLink]="['user/login']">Вход</a>
+            <a [routerLink]="['/user/login']">Вход</a>
           </li>
 
           <li>
-            <a [routerLink]="['user/register']">Регистрация</a>
+            <a [routerLink]="['/user/register']">Регистрация</a>
           </li>
         </ul>
       </div>
@@ -81,7 +81,7 @@
         </div>
         <button
           *ngIf="query"
-          routerLink="events/search"
+          routerLink="/events/search"
           (click)="reset(searchForm)"
           [queryParams]="{query}"
           class="btn btn-default"

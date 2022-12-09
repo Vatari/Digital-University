@@ -1,8 +1,6 @@
 <ng-container *ngIf="loading | async">
   <div class="overlay"></div>
 
-  <mat-progress-spinner
-    [mode]="'indeterminate'"
-  ></mat-progress-spinner>
-  <h1>Зареждане</h1>
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+  <h1>Зареждане...</h1>
 </ng-container>

@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from 'src/app/common/toastr.service';
 import { AuthService } from 'src/app/user/auth.service';
 import { TokenService } from 'src/app/user/token.service';
@@ -20,14 +19,14 @@ export class SessionListComponent implements OnChanges, OnInit {
   visibleSessions: ISession[] = [];
   isLiked!: boolean;
   isOwner!: boolean;
+  sessions_!: ISession[];
 
   constructor(
     public auth: AuthService,
     private likeService: LikeService,
     public token: TokenService,
     private toastr: NotificationService,
-    private eventService: EventService,
-    private route: ActivatedRoute
+    private eventService: EventService
   ) {}
 
   ngOnChanges() {
@@ -38,7 +37,9 @@ export class SessionListComponent implements OnChanges, OnInit {
         : this.visibleSessions.sort(sortByVotesDesc);
     }
   }
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.sessions);
+  }
 
   deleteSession(session: ISession) {
     if (confirm('Сигурен ли сте?')) {

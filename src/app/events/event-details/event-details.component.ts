@@ -4,7 +4,6 @@ import { IEvent, ISession } from '../shared/index';
 import { EventService } from '../shared/event.service';
 import { TokenService } from 'src/app/user/token.service';
 import { AuthService } from 'src/app/user/auth.service';
-import { map } from 'rxjs';
 
 @Component({
   templateUrl: './event-details.component.html',
@@ -30,14 +29,15 @@ export class EventDetailsComponent implements OnInit {
     this.event = this.route.snapshot.data['event'];
     this.id = this.route.snapshot.params['id'];
     this.sessions = this.route.snapshot.data['sessions'];
+
     this.addMode = false;
   }
 
   reloadCurrentRoute() {
-    const currentUrl = this.router.url;
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentUrl]);
-    });
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
 
   addSession() {
@@ -50,8 +50,7 @@ export class EventDetailsComponent implements OnInit {
     this.sessions.push(session);
     this.eventService.createSession(session);
     this.addMode = false;
-
-    //this.reloadCurrentRoute();
+    this.reloadCurrentRoute();
   }
 
   cancelCreateSession() {

@@ -4,8 +4,8 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { EventService, ISession, restrictedWords } from '../shared/index';
+import { Router } from '@angular/router';
+import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
   selector: 'app-session',

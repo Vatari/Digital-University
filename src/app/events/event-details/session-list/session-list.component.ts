@@ -37,9 +37,7 @@ export class SessionListComponent implements OnChanges, OnInit {
         : this.visibleSessions.sort(sortByVotesDesc);
     }
   }
-  ngOnInit() {
-    console.log(this.sessions);
-  }
+  ngOnInit() {}
 
   deleteSession(session: ISession) {
     if (confirm('Сигурен ли сте?')) {

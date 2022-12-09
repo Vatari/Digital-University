@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -29,6 +32,8 @@ import { ContactsComponent } from './common/contacts/contacts.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { StaffComponent } from './common/staff/staff.component';
 import { CertificatesComponent } from './common/certificates/certificates.component';
+import { SpinnerComponent } from './common/spinner/spinner.component';
+import { SpinnerInterceptorProviders } from './common/spinner.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,6 +55,7 @@ import { CertificatesComponent } from './common/certificates/certificates.compon
     FooterComponent,
     StaffComponent,
     CertificatesComponent,
+    SpinnerComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -59,10 +65,13 @@ import { CertificatesComponent } from './common/certificates/certificates.compon
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatToolbarModule,
   ],
   providers: [
     { provide: 'canDeactivateCreateEvent', useValue: checkState },
-    authInterceptorProviders,
+    authInterceptorProviders, SpinnerInterceptorProviders
   ],
   bootstrap: [AppComponent],
 })

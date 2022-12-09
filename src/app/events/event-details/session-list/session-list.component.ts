@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from 'src/app/common/toastr.service';
 import { AuthService } from 'src/app/user/auth.service';
 import { TokenService } from 'src/app/user/token.service';
@@ -27,7 +27,7 @@ export class SessionListComponent implements OnChanges, OnInit {
     public token: TokenService,
     private toastr: NotificationService,
     private eventService: EventService,
-    private router: Router
+    private route: ActivatedRoute
   ) {}
 
   ngOnChanges() {

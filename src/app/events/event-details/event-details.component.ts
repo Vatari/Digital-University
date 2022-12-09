@@ -4,6 +4,7 @@ import { IEvent, ISession } from '../shared/index';
 import { EventService } from '../shared/event.service';
 import { TokenService } from 'src/app/user/token.service';
 import { AuthService } from 'src/app/user/auth.service';
+import { map } from 'rxjs';
 
 @Component({
   templateUrl: './event-details.component.html',
@@ -49,7 +50,8 @@ export class EventDetailsComponent implements OnInit {
     this.sessions.push(session);
     this.eventService.createSession(session);
     this.addMode = false;
-    this.reloadCurrentRoute();
+
+    //this.reloadCurrentRoute();
   }
 
   cancelCreateSession() {

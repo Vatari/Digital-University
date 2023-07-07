@@ -15,7 +15,7 @@ package.json for server install Express and some other libraries nedeed
 
 Required version of NodeJS: 16.18.0
 
-Live demo here: http://b8e00a7b5ca8.sn.mynetname.net:11180
+Live demo here: http://71af08d6e733.sn.mynetname.net:11180
 
 Local installation:
 
@@ -53,7 +53,7 @@ package.json за клиента инсталира Angular клиента
 
 package.json за сървъра инсталира Express и някои други нужни библиотеки
 
-Демо на сайта може да откриете тук: http://b8e00a7b5ca8.sn.mynetname.net:11180
+Демо на сайта може да откриете тук: http://71af08d6e733.sn.mynetname.net:11180
 
 Локална инсталация
 
